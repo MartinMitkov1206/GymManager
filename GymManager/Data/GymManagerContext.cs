@@ -5,16 +5,16 @@ namespace GymManager.Data
 {
     public class GymManagerContext : DbContext
     {
-        public GymManagerContext() 
-            : base() {}
+        public GymManagerContext(DbContextOptions<GymManagerContext> options)
+           : base(options) { }
 
-        DbSet<User> User { get; set; }
-        DbSet<Role> Role { get; set; }
-        DbSet<Goal> Goal { get; set; }
-        DbSet<Stats> Stats { get; set; }
-        DbSet<Workout> Workout { get; set; }
-        DbSet<WorkoutStats> WorkoutStats { get; set; }
-        DbSet<WorkoutType> WorkoutType { get; set; } 
+        public DbSet<User> User { get; set; }
+        public DbSet<Role> Role { get; set; }
+        public DbSet<Goal> Goal { get; set; }
+        public DbSet<Stats> Stats { get; set; }
+        public DbSet<Workout> Workout { get; set; }
+        public DbSet<WorkoutStats> WorkoutStats { get; set; }
+        public DbSet<WorkoutType> WorkoutType { get; set; } 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

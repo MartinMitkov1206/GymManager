@@ -1,0 +1,108 @@
+﻿/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #333333; /* Dark Grey background */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    background-color: #f4f4f4; /* Light Grey background for the form */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    text-align: center;
+}
+
+h1 {
+    font-size: 30px;
+    color: #333333; /* Dark Grey for the title */
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 16px;
+    color: #333333; /* Dark Grey label */
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    padding: 12px;
+    font-size: 16px;
+    width: 100%;
+    border: 2px solid #cccccc; /* Light Grey border */
+    border-radius: 6px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    input[type="email"]:focus {
+        border-color: #333333; /* Dark Grey border on focus */
+        outline: none;
+        box-shadow: 0 0 8px rgba(51, 51, 51, 0.4); /* Focus shadow */
+    }
+
+button[type="submit"] {
+    background-color: #333333; /* Dark Grey button */
+    color: white;
+    font-size: 18px;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 10px;
+}
+
+    button[type="submit"]:hover {
+        background-color: #555555; /* Slightly lighter dark grey on hover */
+        transform: scale(1.05); /* Slight scale effect */
+    }
+
+    button[type="submit"]:active {
+        background-color: #333333; /* Active state with the original dark grey */
+    }
+
+.alert {
+    background-color: #f8d7da; /* Light red background for errors */
+    color: #721c24; /* Dark red color */
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}

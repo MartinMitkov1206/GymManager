@@ -1,3 +1,11 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Font sizes and responsiveness */
 html {
   font-size: 14px;
 }
@@ -8,15 +16,74 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
+/* Ensure the body stretches to the bottom */
 html {
   position: relative;
   min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+  margin-bottom: 60px; /* Ensures the footer stays at the bottom */
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4; /* Light Grey background */
+  padding-top: 70px; /* Ensure content does not overlap with fixed navbar */
+}
+
+/* Navbar Styles */
+.navbar {
+  position: fixed; /* Fix the navbar to the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff; /* White background for the navbar */
+  z-index: 1000; /* Ensure navbar stays on top of other elements */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add slight shadow for effect */
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.navbar-brand, .nav-link {
+  color: #333; /* Dark grey color for text */
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+  color: #007bff; /* Blue color on hover */
+}
+
+/* Adjust the space for the main content so it doesn't overlap the navbar */
+.container {
+  padding-top: 20px; /* Add space for the fixed navbar */
+}
+
+/* Focus state for input fields and buttons */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* Adjusting the footer for proper spacing */
+footer {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  background-color: #f8f9fa; /* Light Grey background for footer */
+  border-top: 1px solid #ddd; /* Subtle border at the top */
+}
+
+/* Additional space for form inputs and buttons to make them more user-friendly */
+.form-control {
+  margin-bottom: 15px; /* Add some space between form elements */
+}
+
+/* General button styling */
+.btn {
+  margin-top: 10px; /* Space between button and elements above */
 }
