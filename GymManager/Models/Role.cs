@@ -8,9 +8,6 @@ namespace GymManager.Models
         [Key]
         public int RoleID { get; set; }
         public string RoleType { get; set; }
-        public int UserID { get; set; }
 
-        [ForeignKey("UserID")]
-        public User User { get; set; }
     }
 }

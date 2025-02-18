@@ -4,44 +4,54 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-// Register GymManagerContext with SQL Server (use your actual connection string)
 builder.Services.AddDbContext<GymManagerContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add controllers and views
 builder.Services.AddControllersWithViews();
+
+// **Add Session Services**
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Session timeout (30 minutes)
+    options.Cookie.HttpOnly = true; // Prevents JavaScript access
+    options.Cookie.IsEssential = true; // Ensures session works even if tracking is disabled
+});
+
+// **Add Authentication Middleware (Needed for Login)**
+builder.Services.AddAuthentication("GymManagerAuth")
+    .AddCookie("GymManagerAuth", options =>
+    {
+        options.LoginPath = "/Account/Login";  // Redirect to Login if unauthorized
+        options.AccessDeniedPath = "/Account/AccessDenied"; // Redirect if no access
+    });
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    // Exception handler for non-development environments
     app.UseExceptionHandler("/Home/Error");
-    app.UseHsts(); // HTTP Strict Transport Security (HSTS)
+    app.UseHsts();
 }
 else
 {
-    app.UseDeveloperExceptionPage(); // Developer exception page for development environment
+    app.UseDeveloperExceptionPage();
 }
 
-// HTTPS redirection
 app.UseHttpsRedirection();
-
-// Static files (e.g., CSS, JS, images)
 app.UseStaticFiles();
-
-// Routing
 app.UseRouting();
 
-// Authorization middleware
+// **Enable Sessions**
+app.UseSession();
+
+// **Enable Authentication and Authorization**
+app.UseAuthentication();
 app.UseAuthorization();
 
-// Configure default route for the app
+// Configure default route
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-// Run the application
 app.Run();

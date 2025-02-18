@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\GymManager.csproj": {}
+    "D:\\GymManager\\GymManager\\GymManager\\GymManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\GymManager.csproj": {
+    "D:\\GymManager\\GymManager\\GymManager\\GymManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\GymManager.csproj",
+        "projectUniqueName": "D:\\GymManager\\GymManager\\GymManager\\GymManager.csproj",
         "projectName": "GymManager",
-        "projectPath": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\GymManager.csproj",
-        "packagesPath": "C:\\Users\\erene\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\obj\\",
+        "projectPath": "D:\\GymManager\\GymManager\\GymManager\\GymManager.csproj",
+        "packagesPath": "C:\\Users\\GRIGS\\.nuget\\packages\\",
+        "outputPath": "D:\\GymManager\\GymManager\\GymManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\erene\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\GRIGS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -46,6 +46,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.0, )"

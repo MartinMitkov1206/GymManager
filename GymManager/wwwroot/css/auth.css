@@ -46,8 +46,10 @@ label {
     font-weight: bold;
 }
 
+/* Input fields */
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"] {
     padding: 12px;
     font-size: 16px;
     width: 100%;
@@ -58,14 +60,14 @@ input[type="password"] {
     transition: all 0.3s ease;
 }
 
-    input[type="text"]:focus,
-    input[type="password"]:focus {
-        border-color: #333333; /* Dark Grey border on focus */
-        outline: none;
-        box-shadow: 0 0 8px rgba(51, 51, 51, 0.4); /* Focus shadow */
-    }
+input:focus {
+    border-color: #333333; /* Dark Grey border on focus */
+    outline: none;
+    box-shadow: 0 0 8px rgba(51, 51, 51, 0.4); /* Focus shadow */
+}
 
-button[type="submit"] {
+/* Buttons */
+button {
     background-color: #333333; /* Dark Grey button */
     color: white;
     font-size: 18px;
@@ -77,15 +79,16 @@ button[type="submit"] {
     margin-top: 10px;
 }
 
-    button[type="submit"]:hover {
+    button:hover {
         background-color: #555555; /* Slightly lighter dark grey on hover */
         transform: scale(1.05); /* Slight scale effect */
     }
 
-    button[type="submit"]:active {
+    button:active {
         background-color: #333333; /* Active state with the original dark grey */
     }
 
+/* Error messages */
 .alert {
     background-color: #f8d7da; /* Light red background for errors */
     color: #721c24; /* Dark red color */
@@ -96,11 +99,17 @@ button[type="submit"] {
     font-weight: bold;
 }
 
-.alert-danger {
-    background-color: #f8d7da;
+.text-danger {
     color: #721c24;
+    font-size: 14px;
+    font-weight: bold;
 }
 
-.form-group:last-child {
-    margin-bottom: 0;
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
 }
