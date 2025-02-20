@@ -1,89 +1,138 @@
-/* Global Styles */
+/* Global Theme Variables */
+:root {
+    --primary-color: #18191a; /* Dark background for navbar, header */
+    --secondary-color: #808080; /* Grey for borders and secondary elements */
+    --background-color: #222222; /* Overall page background */
+    --text-color: #ffffff; /* White text for contrast */
+    --accent-color: #9a31c4; /* Accent color for hovers, links */
+    --form-bg: #282828; /* Background for forms and containers */
+    --error-color: #fc6060;
+}
+
+/* Global Resets & Body */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Font sizes and responsiveness */
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-/* Ensure the body stretches to the bottom */
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 body {
-  margin-bottom: 60px; /* Ensures the footer stays at the bottom */
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4; /* Light Grey background */
-  padding-top: 70px; /* Ensure content does not overlap with fixed navbar */
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    height: 100vh;
 }
 
 /* Navbar Styles */
 .navbar {
-  position: fixed; /* Fix the navbar to the top */
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #fff; /* White background for the navbar */
-  z-index: 1000; /* Ensure navbar stays on top of other elements */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add slight shadow for effect */
+    background-color: var(--primary-color) !important;
+    border-bottom: 1px solid var(--secondary-color);
 }
 
-.navbar-nav {
-  display: flex;
-  justify-content: flex-start;
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: var(--text-color) !important;
 }
 
-.navbar-brand, .nav-link {
-  color: #333; /* Dark grey color for text */
-  font-size: 18px;
-  text-decoration: none;
+    .navbar-nav .nav-link:hover {
+        color: var(--accent-color) !important;
+    }
+
+/* Auth Container for Login/Register Pages */
+.auth-container {
+    background-color: var(--form-bg);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    margin: auto;
 }
 
-.navbar-brand:hover, .nav-link:hover {
-  color: #007bff; /* Blue color on hover */
-}
-
-/* Adjust the space for the main content so it doesn't overlap the navbar */
-.container {
-  padding-top: 20px; /* Add space for the fixed navbar */
-}
-
-/* Focus state for input fields and buttons */
-.btn:focus,
-.btn:active:focus,
-.btn-link.nav-link:focus,
-.form-control:focus,
-.form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-/* Adjusting the footer for proper spacing */
-footer {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-align: center;
-  background-color: #f8f9fa; /* Light Grey background for footer */
-  border-top: 1px solid #ddd; /* Subtle border at the top */
-}
-
-/* Additional space for form inputs and buttons to make them more user-friendly */
+/* Forms */
 .form-control {
-  margin-bottom: 15px; /* Add some space between form elements */
+    background-color: #333333;
+    color: var(--text-color);
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px;
 }
 
-/* General button styling */
-.btn {
-  margin-top: 10px; /* Space between button and elements above */
+    .form-control:focus {
+        background-color: #444444;
+        border-color: var(--accent-color);
+    }
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--text-color);
 }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+        background-color: var(--accent-color);
+        border-color: var(--accent-color);
+    }
+
+/* Alerts */
+.alert {
+    background-color: var(--error-color);
+    color: var(--primary-color);
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+/* Jumbotron (for Home Page Hero Section) */
+.jumbotron {
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 2rem;
+}
+
+/* Cards (used on Home page Features) */
+.card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    background-color: var(--form-bg);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+/* Carousel Inner */
+.carousel-inner {
+    background: var(--secondary-color);
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--text-color);
+}
+
+/* Links */
+a {
+    color: var(--accent-color);
+}
+
+    a:hover {
+        color: var(--secondary-color);
+    }
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    padding: 15px 0;
+    text-align: center;
+    color: var(--text-color);
+    margin-top: 2rem;
+}
+

@@ -11,18 +11,38 @@ body {
     height: 100vh;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
+    margin: 0;
+    padding-top: 60px; /* Prevents navbar overlap */
 }
 
 .container {
     width: 100%;
     max-width: 400px;
     background-color: #f4f4f4; /* Light Grey background for the form */
-    padding: 30px;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
     text-align: center;
 }
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+
+
 
 h1 {
     font-size: 30px;
@@ -33,10 +53,6 @@ h1 {
 form {
     display: flex;
     flex-direction: column;
-}
-
-.form-group {
-    margin-bottom: 20px;
 }
 
 label {

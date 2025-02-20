@@ -1,8 +1,68 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Welcome to GymManager";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center p-5 rounded">
+        <h1 class="display-4">Welcome to GymManager</h1>
+        <p class="lead">Your ultimate fitness companion! Track workouts, set goals, and stay motivated.</p>
+        @if (Context.Session.GetInt32("UserID") == null)
+        {
+            <a class="btn btn-light btn-lg me-2" asp-controller="Account" asp-action="Register">Get Started</a>
+            <a class="btn btn-outline-light btn-lg" asp-controller="Account" asp-action="Login">Login</a>
+        }
+        else
+        {
+            <a class="btn btn-light btn-lg" asp-controller="Dashboard" asp-action="Index">Go to Dashboard</a>
+        }
+    </div>
+
+    <!-- Features Section -->
+    <div class="row text-center mt-5">
+        <div class="col-md-4">
+            <div class="card shadow-sm p-4">
+                <i class="bi bi-calendar2-check display-4 text-primary"></i>
+                <h3 class="mt-3">Schedule Workouts</h3>
+                <p>Plan your gym sessions and track progress effortlessly.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm p-4">
+                <i class="bi bi-bar-chart-fill display-4 text-success"></i>
+                <h3 class="mt-3">Track Progress</h3>
+                <p>Monitor your fitness journey with real-time stats.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm p-4">
+                <i class="bi bi-trophy-fill display-4 text-warning"></i>
+                <h3 class="mt-3">Achieve Goals</h3>
+                <p>Set fitness goals and stay motivated every day.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="mt-5 text-center">
+        <h2>What Our Members Say</h2>
+        <div id="testimonialCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <p class="lead">"GymManager helped me stay consistent. Love it!"</p>
+                    <strong>- John Doe</strong>
+                </div>
+                <div class="carousel-item">
+                    <p class="lead">"Best gym tracking app! I never miss a session now."</p>
+                    <strong>- Sarah Lee</strong>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
 </div>

@@ -101,9 +101,10 @@ namespace GymManager.Controllers
         // ** LOGOUT **
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignOutAsync("GymManagerAuth"); // Use "GymManagerAuth" here
             HttpContext.Session.Clear(); // Clear session
             return RedirectToAction("Login");
         }
+
     }
 }

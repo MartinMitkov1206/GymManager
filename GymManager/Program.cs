@@ -30,6 +30,7 @@ builder.Services.AddAuthentication("GymManagerAuth")
         options.AccessDeniedPath = "/Account/AccessDenied"; // Redirect if no access
     });
 
+
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
