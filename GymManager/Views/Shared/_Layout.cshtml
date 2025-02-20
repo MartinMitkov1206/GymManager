@@ -35,7 +35,7 @@
                     <div class="d-flex">
                         @if (HttpContextAccessor.HttpContext.Session.GetInt32("UserID") != null)
                         {
-                            <span class="navbar-text me-3">
+                            <span class="navbar-text me-3" style="color: #fff;">
                                 Welcome, @HttpContextAccessor.HttpContext.Session.GetString("UserName")!
                             </span>
                             <a class="nav-link text-danger" asp-controller="Account" asp-action="Logout">Logout</a>
