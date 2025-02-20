@@ -1,0 +1,173 @@
+﻿@{
+    ViewData["Title"] = "Achieve Goals & Track Progress";
+    var goal = ViewBag.Goal as GymManager.Models.Goal;
+    var stats = ViewBag.Stats as GymManager.Models.Stats;
+    string unit = ViewBag.Unit as string ?? "kg";
+    int weightProgress = (int)ViewBag.WeightProgress;
+    int benchPressProgress = (int)ViewBag.BenchPressProgress;
+    int squatProgress = (int)ViewBag.SquatProgress;
+    int deadLiftProgress = (int)ViewBag.DeadLiftProgress;
+}
+
+<div class="container mt-5">
+    <!-- Progress Overview Table at the Top -->
+    <h3 class="text-center mb-4">Progress Overview</h3>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>Metric</th>
+                <th>Current</th>
+                <th>Goal</th>
+                <th>Progress</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Weight</td>
+                <td>@(stats?.Weight ?? 0) @unit</td>
+                <td>@(goal?.Weight ?? 0) @unit</td>
+                <td>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: @weightProgress%;" aria-valuenow="@weightProgress" aria-valuemin="0" aria-valuemax="100">
+                            @weightProgress%
+                        </div>
+                    </div>
+                    @if (weightProgress == 100)
+                    {
+                        <div class="small text-muted mt-1">Goal achieved!</div>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>Bench Press</td>
+                <td>@(stats?.BenchPress ?? 0) @unit</td>
+                <td>@(goal?.BenchPress ?? 0) @unit</td>
+                <td>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: @benchPressProgress%;" aria-valuenow="@benchPressProgress" aria-valuemin="0" aria-valuemax="100">
+                            @benchPressProgress%
+                        </div>
+                    </div>
+                    @if (benchPressProgress == 100)
+                    {
+                        <div class="small text-muted mt-1">Goal achieved!</div>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>Squat</td>
+                <td>@(stats?.Squat ?? 0) @unit</td>
+                <td>@(goal?.Squat ?? 0) @unit</td>
+                <td>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: @squatProgress%;" aria-valuenow="@squatProgress" aria-valuemin="0" aria-valuemax="100">
+                            @squatProgress%
+                        </div>
+                    </div>
+                    @if (squatProgress == 100)
+                    {
+                        <div class="small text-muted mt-1">Goal achieved!</div>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>Deadlift</td>
+                <td>@(stats?.DeadLift ?? 0) @unit</td>
+                <td>@(goal?.DeadLift ?? 0) @unit</td>
+                <td>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: @deadLiftProgress%;" aria-valuenow="@deadLiftProgress" aria-valuemin="0" aria-valuemax="100">
+                            @deadLiftProgress%
+                        </div>
+                    </div>
+                    @if (deadLiftProgress == 100)
+                    {
+                        <div class="small text-muted mt-1">Goal achieved!</div>
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr class="my-5" />
+
+    <!-- Form for Updating Stats & Goals -->
+    <h2 class="text-center mb-4">Set Your Goals & Update Your Current Stats</h2>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-success text-center">
+            @ViewBag.Message
+        </div>
+    }
+
+    <form method="post">
+        <h4>Current Stats</h4>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="Stats_Weight" class="form-label">Current Weight</label>
+                <input type="number" step="any" class="form-control" id="Stats_Weight" name="Stats_Weight" value="@(stats?.Weight ?? 0)" required />
+            </div>
+            <div class="col-md-6">
+                <label for="Stats_BenchPress" class="form-label">Current Bench Press</label>
+                <input type="number" step="any" class="form-control" id="Stats_BenchPress" name="Stats_BenchPress" value="@(stats?.BenchPress ?? 0)" required />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="Stats_Squat" class="form-label">Current Squat</label>
+                <input type="number" step="any" class="form-control" id="Stats_Squat" name="Stats_Squat" value="@(stats?.Squat ?? 0)" required />
+            </div>
+            <div class="col-md-6">
+                <label for="Stats_DeadLift" class="form-label">Current Deadlift</label>
+                <input type="number" step="any" class="form-control" id="Stats_DeadLift" name="Stats_DeadLift" value="@(stats?.DeadLift ?? 0)" required />
+            </div>
+        </div>
+
+        <h4>Goal Stats</h4>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="Goal_Weight" class="form-label">Target Weight</label>
+                <input type="number" step="any" class="form-control" id="Goal_Weight" name="Goal_Weight" value="@(goal?.Weight ?? 0)" required />
+            </div>
+            <div class="col-md-6">
+                <label for="Goal_BenchPress" class="form-label">Target Bench Press</label>
+                <input type="number" step="any" class="form-control" id="Goal_BenchPress" name="Goal_BenchPress" value="@(goal?.BenchPress ?? 0)" required />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="Goal_Squat" class="form-label">Target Squat</label>
+                <input type="number" step="any" class="form-control" id="Goal_Squat" name="Goal_Squat" value="@(goal?.Squat ?? 0)" required />
+            </div>
+            <div class="col-md-6">
+                <label for="Goal_DeadLift" class="form-label">Target Deadlift</label>
+                <input type="number" step="any" class="form-control" id="Goal_DeadLift" name="Goal_DeadLift" value="@(goal?.DeadLift ?? 0)" required />
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="Unit" class="form-label">Unit</label>
+            <select class="form-select" id="Unit" name="Unit">
+                @if (unit == "kg")
+                {
+                    <option value="kg" selected>kg</option>
+                }
+                else
+                {
+                    <option value="kg">kg</option>
+                }
+                @if (unit == "lbs")
+                {
+                    <option value="lbs" selected>lbs</option>
+                }
+                else
+                {
+                    <option value="lbs">lbs</option>
+                }
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Update Stats & Goals</button>
+    </form>
+</div>

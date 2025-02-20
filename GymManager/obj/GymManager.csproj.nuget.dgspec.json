@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GymManager\\GymManager\\GymManager\\GymManager.csproj": {}
+    "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\GymManager.csproj": {}
   },
   "projects": {
-    "D:\\GymManager\\GymManager\\GymManager\\GymManager.csproj": {
+    "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\GymManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GymManager\\GymManager\\GymManager\\GymManager.csproj",
+        "projectUniqueName": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\GymManager.csproj",
         "projectName": "GymManager",
-        "projectPath": "D:\\GymManager\\GymManager\\GymManager\\GymManager.csproj",
-        "packagesPath": "C:\\Users\\GRIGS\\.nuget\\packages\\",
-        "outputPath": "D:\\GymManager\\GymManager\\GymManager\\obj\\",
+        "projectPath": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\GymManager.csproj",
+        "packagesPath": "C:\\Users\\pavka\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\GRIGS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pavka\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
