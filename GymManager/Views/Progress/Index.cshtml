@@ -24,8 +24,12 @@
         <tbody>
             <tr>
                 <td>Weight</td>
-                <td>@(stats?.Weight ?? 0) @unit</td>
-                <td>@(goal?.Weight ?? 0) @unit</td>
+                <td class="display-value" data-original="@(stats?.Weight ?? 0)">
+                    @(stats?.Weight ?? 0) @unit
+                </td>
+                <td class="display-value" data-original="@(goal?.Weight ?? 0)">
+                    @(goal?.Weight ?? 0) @unit
+                </td>
                 <td>
                     <div class="progress">
                         <div class="progress-bar bg-success" role="progressbar" style="width: @weightProgress%;" aria-valuenow="@weightProgress" aria-valuemin="0" aria-valuemax="100">
@@ -34,14 +38,18 @@
                     </div>
                     @if (weightProgress == 100)
                     {
-                        <div class="small text-muted mt-1">Goal achieved!</div>
+                            <div class="small text-muted mt-1">Goal achieved!</div>
                     }
                 </td>
             </tr>
             <tr>
                 <td>Bench Press</td>
-                <td>@(stats?.BenchPress ?? 0) @unit</td>
-                <td>@(goal?.BenchPress ?? 0) @unit</td>
+                <td class="display-value" data-original="@(stats?.BenchPress ?? 0)">
+                    @(stats?.BenchPress ?? 0) @unit
+                </td>
+                <td class="display-value" data-original="@(goal?.BenchPress ?? 0)">
+                    @(goal?.BenchPress ?? 0) @unit
+                </td>
                 <td>
                     <div class="progress">
                         <div class="progress-bar bg-success" role="progressbar" style="width: @benchPressProgress%;" aria-valuenow="@benchPressProgress" aria-valuemin="0" aria-valuemax="100">
@@ -50,14 +58,18 @@
                     </div>
                     @if (benchPressProgress == 100)
                     {
-                        <div class="small text-muted mt-1">Goal achieved!</div>
+                            <div class="small text-muted mt-1">Goal achieved!</div>
                     }
                 </td>
             </tr>
             <tr>
                 <td>Squat</td>
-                <td>@(stats?.Squat ?? 0) @unit</td>
-                <td>@(goal?.Squat ?? 0) @unit</td>
+                <td class="display-value" data-original="@(stats?.Squat ?? 0)">
+                    @(stats?.Squat ?? 0) @unit
+                </td>
+                <td class="display-value" data-original="@(goal?.Squat ?? 0)">
+                    @(goal?.Squat ?? 0) @unit
+                </td>
                 <td>
                     <div class="progress">
                         <div class="progress-bar bg-success" role="progressbar" style="width: @squatProgress%;" aria-valuenow="@squatProgress" aria-valuemin="0" aria-valuemax="100">
@@ -66,14 +78,18 @@
                     </div>
                     @if (squatProgress == 100)
                     {
-                        <div class="small text-muted mt-1">Goal achieved!</div>
+                            <div class="small text-muted mt-1">Goal achieved!</div>
                     }
                 </td>
             </tr>
             <tr>
                 <td>Deadlift</td>
-                <td>@(stats?.DeadLift ?? 0) @unit</td>
-                <td>@(goal?.DeadLift ?? 0) @unit</td>
+                <td class="display-value" data-original="@(stats?.DeadLift ?? 0)">
+                    @(stats?.DeadLift ?? 0) @unit
+                </td>
+                <td class="display-value" data-original="@(goal?.DeadLift ?? 0)">
+                    @(goal?.DeadLift ?? 0) @unit
+                </td>
                 <td>
                     <div class="progress">
                         <div class="progress-bar bg-success" role="progressbar" style="width: @deadLiftProgress%;" aria-valuenow="@deadLiftProgress" aria-valuemin="0" aria-valuemax="100">
@@ -82,7 +98,7 @@
                     </div>
                     @if (deadLiftProgress == 100)
                     {
-                        <div class="small text-muted mt-1">Goal achieved!</div>
+                            <div class="small text-muted mt-1">Goal achieved!</div>
                     }
                 </td>
             </tr>
@@ -96,31 +112,32 @@
 
     @if (ViewBag.Message != null)
     {
-        <div class="alert alert-success text-center">
+        <div class="alert text-center" style="background-color: #28a745 !important; border-color: #28a745 !important; color: #ffffff !important;">
             @ViewBag.Message
         </div>
     }
+
 
     <form method="post">
         <h4>Current Stats</h4>
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="Stats_Weight" class="form-label">Current Weight</label>
-                <input type="number" step="any" class="form-control" id="Stats_Weight" name="Stats_Weight" value="@(stats?.Weight ?? 0)" required />
+                <input type="number" step="any" class="form-control" id="Stats_Weight" name="Stats_Weight" value="@(stats?.Weight ?? 0)" required data-original="@(stats?.Weight ?? 0)" />
             </div>
             <div class="col-md-6">
                 <label for="Stats_BenchPress" class="form-label">Current Bench Press</label>
-                <input type="number" step="any" class="form-control" id="Stats_BenchPress" name="Stats_BenchPress" value="@(stats?.BenchPress ?? 0)" required />
+                <input type="number" step="any" class="form-control" id="Stats_BenchPress" name="Stats_BenchPress" value="@(stats?.BenchPress ?? 0)" required data-original="@(stats?.BenchPress ?? 0)" />
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="Stats_Squat" class="form-label">Current Squat</label>
-                <input type="number" step="any" class="form-control" id="Stats_Squat" name="Stats_Squat" value="@(stats?.Squat ?? 0)" required />
+                <input type="number" step="any" class="form-control" id="Stats_Squat" name="Stats_Squat" value="@(stats?.Squat ?? 0)" required data-original="@(stats?.Squat ?? 0)" />
             </div>
             <div class="col-md-6">
                 <label for="Stats_DeadLift" class="form-label">Current Deadlift</label>
-                <input type="number" step="any" class="form-control" id="Stats_DeadLift" name="Stats_DeadLift" value="@(stats?.DeadLift ?? 0)" required />
+                <input type="number" step="any" class="form-control" id="Stats_DeadLift" name="Stats_DeadLift" value="@(stats?.DeadLift ?? 0)" required data-original="@(stats?.DeadLift ?? 0)" />
             </div>
         </div>
 
@@ -128,21 +145,21 @@
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="Goal_Weight" class="form-label">Target Weight</label>
-                <input type="number" step="any" class="form-control" id="Goal_Weight" name="Goal_Weight" value="@(goal?.Weight ?? 0)" required />
+                <input type="number" step="any" class="form-control" id="Goal_Weight" name="Goal_Weight" value="@(goal?.Weight ?? 0)" required data-original="@(goal?.Weight ?? 0)" />
             </div>
             <div class="col-md-6">
                 <label for="Goal_BenchPress" class="form-label">Target Bench Press</label>
-                <input type="number" step="any" class="form-control" id="Goal_BenchPress" name="Goal_BenchPress" value="@(goal?.BenchPress ?? 0)" required />
+                <input type="number" step="any" class="form-control" id="Goal_BenchPress" name="Goal_BenchPress" value="@(goal?.BenchPress ?? 0)" required data-original="@(goal?.BenchPress ?? 0)" />
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="Goal_Squat" class="form-label">Target Squat</label>
-                <input type="number" step="any" class="form-control" id="Goal_Squat" name="Goal_Squat" value="@(goal?.Squat ?? 0)" required />
+                <input type="number" step="any" class="form-control" id="Goal_Squat" name="Goal_Squat" value="@(goal?.Squat ?? 0)" required data-original="@(goal?.Squat ?? 0)" />
             </div>
             <div class="col-md-6">
                 <label for="Goal_DeadLift" class="form-label">Target Deadlift</label>
-                <input type="number" step="any" class="form-control" id="Goal_DeadLift" name="Goal_DeadLift" value="@(goal?.DeadLift ?? 0)" required />
+                <input type="number" step="any" class="form-control" id="Goal_DeadLift" name="Goal_DeadLift" value="@(goal?.DeadLift ?? 0)" required data-original="@(goal?.DeadLift ?? 0)" />
             </div>
         </div>
 
@@ -151,19 +168,19 @@
             <select class="form-select" id="Unit" name="Unit">
                 @if (unit == "kg")
                 {
-                    <option value="kg" selected>kg</option>
+                        <option value="kg" selected>kg</option>
                 }
                 else
                 {
-                    <option value="kg">kg</option>
+                        <option value="kg">kg</option>
                 }
                 @if (unit == "lbs")
                 {
-                    <option value="lbs" selected>lbs</option>
+                        <option value="lbs" selected>lbs</option>
                 }
                 else
                 {
-                    <option value="lbs">lbs</option>
+                        <option value="lbs">lbs</option>
                 }
             </select>
         </div>
@@ -171,3 +188,35 @@
         <button type="submit" class="btn btn-primary w-100">Update Stats & Goals</button>
     </form>
 </div>
+
+@section Scripts {
+        <script>
+            $(document).ready(function () {
+                var conversionFactor = 2.20462;
+                // When the unit select changes, update all values automatically.
+                $("#Unit").change(function () {
+                    var selectedUnit = $(this).val();
+
+                    // Update input fields that have data-original
+                    $("input[data-original]").each(function () {
+                        var original = parseFloat($(this).attr("data-original"));
+                        if (selectedUnit === "lbs") {
+                            $(this).val((original * conversionFactor).toFixed(2));
+                        } else {
+                            $(this).val(original);
+                        }
+                    });
+
+                    // Update progress table values with the class "display-value"
+                    $(".display-value").each(function () {
+                        var original = parseFloat($(this).attr("data-original"));
+                        if (selectedUnit === "lbs") {
+                            $(this).text((original * conversionFactor).toFixed(2) + " " + selectedUnit);
+                        } else {
+                            $(this).text(original + " " + selectedUnit);
+                        }
+                    });
+                });
+            });
+        </script>
+}

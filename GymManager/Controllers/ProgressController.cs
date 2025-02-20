@@ -26,10 +26,12 @@ namespace GymManager.Controllers
             }
 
             // Retrieve existing models; if missing, instantiate new ones.
-            var goal = _context.Goal.FirstOrDefault(g => g.UserID == userId.Value) ?? new Goal { UserID = userId.Value };
-            var stats = _context.Stats.FirstOrDefault(s => s.UserID == userId.Value) ?? new Stats { UserID = userId.Value };
+            var goal = _context.Goal.FirstOrDefault(g => g.UserID == userId.Value)
+                       ?? new Goal { UserID = userId.Value };
+            var stats = _context.Stats.FirstOrDefault(s => s.UserID == userId.Value)
+                        ?? new Stats { UserID = userId.Value };
 
-            // Check for unit parameter in the query string; default is "kg".
+            // Determine the unit from the query string (default is "kg")
             string unit = Request.Query["unit"];
             if (string.IsNullOrEmpty(unit))
             {
@@ -37,46 +39,15 @@ namespace GymManager.Controllers
             }
             ViewBag.Unit = unit;
 
-            // Calculate progress percentages (the ratio remains the same regardless of units)
+            // Calculate progress percentages (ratio remains the same regardless of units)
             ViewBag.WeightProgress = goal.Weight > 0 ? Math.Min((stats.Weight / goal.Weight) * 100, 100) : 0;
             ViewBag.BenchPressProgress = goal.BenchPress > 0 ? Math.Min((stats.BenchPress / goal.BenchPress) * 100, 100) : 0;
             ViewBag.SquatProgress = goal.Squat > 0 ? Math.Min((stats.Squat / goal.Squat) * 100, 100) : 0;
             ViewBag.DeadLiftProgress = goal.DeadLift > 0 ? Math.Min((stats.DeadLift / goal.DeadLift) * 100, 100) : 0;
 
-            // Prepare copies for display so we don't modify DB values.
-            var displayGoal = new Goal
-            {
-                Weight = goal.Weight,
-                BenchPress = goal.BenchPress,
-                Squat = goal.Squat,
-                DeadLift = goal.DeadLift,
-                UserID = goal.UserID
-            };
-            var displayStats = new Stats
-            {
-                Weight = stats.Weight,
-                BenchPress = stats.BenchPress,
-                Squat = stats.Squat,
-                DeadLift = stats.DeadLift,
-                UserID = stats.UserID
-            };
-
-            // If user has selected lbs, convert the displayed values.
-            if (unit == "lbs")
-            {
-                displayGoal.Weight = Math.Round(goal.Weight * 2.20462, 1);
-                displayGoal.BenchPress = Math.Round(goal.BenchPress * 2.20462, 1);
-                displayGoal.Squat = Math.Round(goal.Squat * 2.20462, 1);
-                displayGoal.DeadLift = Math.Round(goal.DeadLift * 2.20462, 1);
-
-                displayStats.Weight = Math.Round(stats.Weight * 2.20462, 1);
-                displayStats.BenchPress = Math.Round(stats.BenchPress * 2.20462, 1);
-                displayStats.Squat = Math.Round(stats.Squat * 2.20462, 1);
-                displayStats.DeadLift = Math.Round(stats.DeadLift * 2.20462, 1);
-            }
-
-            ViewBag.Goal = displayGoal;
-            ViewBag.Stats = displayStats;
+            // Pass the models in their original (kg) values.
+            ViewBag.Goal = goal;
+            ViewBag.Stats = stats;
 
             return View();
         }
@@ -105,9 +76,10 @@ namespace GymManager.Controllers
                 _context.Stats.Add(stats);
             }
 
-            // Read unit selection from the form.
+            // Read the unit selection from the form.
             string unit = form["Unit"];
             ViewBag.Unit = unit;
+            double conversionFactor = 2.20462;
 
             // Parse form values.
             double.TryParse(form["Goal_Weight"], out double formGoalWeight);
@@ -119,21 +91,33 @@ namespace GymManager.Controllers
             double.TryParse(form["Stats_Squat"], out double formStatsSquat);
             double.TryParse(form["Stats_DeadLift"], out double formStatsDeadLift);
 
-            // If unit is lbs, convert input values to kg before saving.
+            // If unit is lbs, convert input values back to kg and round to 2 decimals.
             if (unit == "lbs")
             {
-                formGoalWeight = formGoalWeight / 2.20462;
-                formGoalBenchPress = formGoalBenchPress / 2.20462;
-                formGoalSquat = formGoalSquat / 2.20462;
-                formGoalDeadLift = formGoalDeadLift / 2.20462;
+                formGoalWeight = Math.Round(formGoalWeight / conversionFactor, 2);
+                formGoalBenchPress = Math.Round(formGoalBenchPress / conversionFactor, 2);
+                formGoalSquat = Math.Round(formGoalSquat / conversionFactor, 2);
+                formGoalDeadLift = Math.Round(formGoalDeadLift / conversionFactor, 2);
 
-                formStatsWeight = formStatsWeight / 2.20462;
-                formStatsBenchPress = formStatsBenchPress / 2.20462;
-                formStatsSquat = formStatsSquat / 2.20462;
-                formStatsDeadLift = formStatsDeadLift / 2.20462;
+                formStatsWeight = Math.Round(formStatsWeight / conversionFactor, 2);
+                formStatsBenchPress = Math.Round(formStatsBenchPress / conversionFactor, 2);
+                formStatsSquat = Math.Round(formStatsSquat / conversionFactor, 2);
+                formStatsDeadLift = Math.Round(formStatsDeadLift / conversionFactor, 2);
+            }
+            else
+            {
+                formGoalWeight = Math.Round(formGoalWeight, 2);
+                formGoalBenchPress = Math.Round(formGoalBenchPress, 2);
+                formGoalSquat = Math.Round(formGoalSquat, 2);
+                formGoalDeadLift = Math.Round(formGoalDeadLift, 2);
+
+                formStatsWeight = Math.Round(formStatsWeight, 2);
+                formStatsBenchPress = Math.Round(formStatsBenchPress, 2);
+                formStatsSquat = Math.Round(formStatsSquat, 2);
+                formStatsDeadLift = Math.Round(formStatsDeadLift, 2);
             }
 
-            // Update models with converted values.
+            // Update the models (in kg)
             goal.Weight = formGoalWeight;
             goal.BenchPress = formGoalBenchPress;
             goal.Squat = formGoalSquat;
@@ -159,39 +143,9 @@ namespace GymManager.Controllers
 
             ViewBag.Message = "Your stats and goals have been updated successfully!";
 
-            // Prepare display copies to show values in the selected unit.
-            var displayGoal = new Goal
-            {
-                Weight = goal.Weight,
-                BenchPress = goal.BenchPress,
-                Squat = goal.Squat,
-                DeadLift = goal.DeadLift,
-                UserID = goal.UserID
-            };
-            var displayStats = new Stats
-            {
-                Weight = stats.Weight,
-                BenchPress = stats.BenchPress,
-                Squat = stats.Squat,
-                DeadLift = stats.DeadLift,
-                UserID = stats.UserID
-            };
-
-            if (unit == "lbs")
-            {
-                displayGoal.Weight = Math.Round(goal.Weight * 2.20462, 1);
-                displayGoal.BenchPress = Math.Round(goal.BenchPress * 2.20462, 1);
-                displayGoal.Squat = Math.Round(goal.Squat * 2.20462, 1);
-                displayGoal.DeadLift = Math.Round(goal.DeadLift * 2.20462, 1);
-
-                displayStats.Weight = Math.Round(stats.Weight * 2.20462, 1);
-                displayStats.BenchPress = Math.Round(stats.BenchPress * 2.20462, 1);
-                displayStats.Squat = Math.Round(stats.Squat * 2.20462, 1);
-                displayStats.DeadLift = Math.Round(stats.DeadLift * 2.20462, 1);
-            }
-
-            ViewBag.Goal = displayGoal;
-            ViewBag.Stats = displayStats;
+            // Pass the original models (values stored in kg) to the view.
+            ViewBag.Goal = goal;
+            ViewBag.Stats = stats;
 
             return View();
         }

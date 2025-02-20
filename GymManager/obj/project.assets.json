@@ -4061,19 +4061,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Martin Mitkov\\.nuget\\packages\\": {}
+    "C:\\Users\\pavka\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Martin Mitkov\\Documents\\GitHub\\GymManager\\GymManager\\GymManager.csproj",
+      "projectUniqueName": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\GymManager.csproj",
       "projectName": "GymManager",
-      "projectPath": "C:\\Users\\Martin Mitkov\\Documents\\GitHub\\GymManager\\GymManager\\GymManager.csproj",
-      "packagesPath": "C:\\Users\\Martin Mitkov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Martin Mitkov\\Documents\\GitHub\\GymManager\\GymManager\\obj\\",
+      "projectPath": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\GymManager.csproj",
+      "packagesPath": "C:\\Users\\pavka\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Martin Mitkov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pavka\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4081,6 +4081,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4093,6 +4094,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -4137,7 +4143,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -15,14 +15,6 @@
       "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|c:\\users\\pavka\\documents\\github\\gymmanager\\gymmanager\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|c:\\users\\pavka\\documents\\github\\gymmanager\\gymmanager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|c:\\users\\pavka\\documents\\github\\gymmanager\\gymmanager\\controllers\\progresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:controllers\\progresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -34,20 +26,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_ViewImports.cshtml",
-              "DocumentMoniker": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\Views\\_ViewImports.cshtml",
-              "RelativeDocumentMoniker": "Views\\_ViewImports.cshtml",
-              "ToolTip": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\Views\\_ViewImports.cshtml",
-              "RelativeToolTip": "Views\\_ViewImports.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-20T12:06:21.186Z"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -56,21 +36,10 @@
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
               "ToolTip": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-20T12:02:06.349Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T12:01:16.613Z"
+              "WhenOpened": "2025-02-20T18:00:58.488Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -80,9 +49,10 @@
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAABsAAAAAAAAAAAAowDcAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAuwC0AAABrAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-20T11:59:55.574Z"
+              "WhenOpened": "2025-02-20T17:56:06.267Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -92,22 +62,23 @@
               "RelativeDocumentMoniker": "Views\\Progress\\Index.cshtml",
               "ToolTip": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\Views\\Progress\\Index.cshtml",
               "RelativeToolTip": "Views\\Progress\\Index.cshtml",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAiwK0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAcwHcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-20T11:59:03.809Z",
+              "WhenOpened": "2025-02-20T17:41:49.425Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "ProgressController.cs",
               "DocumentMoniker": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\Controllers\\ProgressController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProgressController.cs",
               "ToolTip": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\Controllers\\ProgressController.cs",
               "RelativeToolTip": "Controllers\\ProgressController.cs",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAIwHkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAuwJkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T11:58:12.723Z"
+              "WhenOpened": "2025-02-20T17:33:57.747Z",
+              "EditorCaption": ""
             }
           ]
         }
