@@ -1,11 +1,16 @@
 using GymManager.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using GymManager.Models; // Import IHttpContextAccessor
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<GymManagerContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// **Register IHttpContextAccessor**
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddControllersWithViews();
 
@@ -26,6 +31,16 @@ builder.Services.AddAuthentication("GymManagerAuth")
     });
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<GymManagerContext>();
+
+    if (!context.Role.Any(r => r.RoleType == "User"))
+    {
+        context.Role.Add(new Role { RoleType = "User" });
+        context.SaveChanges();
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -53,5 +68,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
 app.Run();

@@ -16,12 +16,14 @@ namespace GymManager.Controllers
     {
         private readonly GymManagerContext _context;
 
+
         public AccountController(GymManagerContext context)
         {
             _context = context;
         }
 
         // ** REGISTER **
+        [HttpGet]
         [HttpPost]
         public IActionResult Register(RegisterViewModel model)
         {
@@ -41,14 +43,23 @@ namespace GymManager.Controllers
             string salt = PasswordHelper.GenerateSalt();
             string hashedPassword = PasswordHelper.HashPassword(model.Password, salt);
 
+            // 🔹 Find the "User" role in the database
+            var defaultRole = _context.Role.FirstOrDefault(r => r.RoleType == "User");
+
+            if (defaultRole == null)
+            {
+                ModelState.AddModelError("", "Default role 'User' not found in database.");
+                return View(model);
+            }
+
             var user = new User
             {
                 UserName = model.UserName,
                 Email = model.Email,
                 Age = model.Age,
-                RoleID = model.RoleID,
-                PasswordHash = hashedPassword, // Store the hashed password
-                PasswordSalt = salt,          // Store the generated salt
+                RoleID = defaultRole.RoleID, // Set default role
+                PasswordHash = hashedPassword,
+                PasswordSalt = salt,
                 IsEmailConfirmed = false
             };
 
@@ -59,7 +70,9 @@ namespace GymManager.Controllers
         }
 
 
+
         // ** LOGIN **
+        [HttpGet]
         [HttpPost]
         public IActionResult Login(LoginViewModel model)
         {

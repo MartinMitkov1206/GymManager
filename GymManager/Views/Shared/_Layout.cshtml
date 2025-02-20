@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Http
-@inject IHttpContextAccessor HttpContextAccessor
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,10 +33,15 @@
 
                     <!-- User Authentication Links -->
                     <div class="d-flex">
-                        @if (HttpContextAccessor.HttpContext.Session.GetInt32("UserID") != null)
+                        @{
+                            var userId = ViewContext.HttpContext.Session.GetInt32("UserID");
+                            var userName = ViewContext.HttpContext.Session.GetString("UserName");
+                        }
+
+                        @if (userId != null)
                         {
                             <span class="navbar-text me-3">
-                                Welcome, @HttpContextAccessor.HttpContext.Session.GetString("UserName")!
+                                Welcome, @userName!
                             </span>
                             <a class="nav-link text-danger" asp-controller="Account" asp-action="Logout">Logout</a>
                         }
