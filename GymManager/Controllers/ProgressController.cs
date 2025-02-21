@@ -40,7 +40,24 @@ namespace GymManager.Controllers
             ViewBag.Unit = unit;
 
             // Calculate progress percentages (ratio remains the same regardless of units)
-            ViewBag.WeightProgress = goal.Weight > 0 ? Math.Min((stats.Weight / goal.Weight) * 100, 100) : 0;
+            if (goal.Weight > 0)
+            {
+                if (stats.Weight > goal.Weight)
+                {
+                    // Weight loss scenario: current weight is above the goal
+                    ViewBag.WeightProgress = Math.Min((goal.Weight / stats.Weight) * 100, 100);
+                }
+                else
+                {
+                    // Weight gain scenario: current weight is below the goal
+                    ViewBag.WeightProgress = Math.Min((stats.Weight / goal.Weight) * 100, 100);
+                }
+            }
+            else
+            {
+                ViewBag.WeightProgress = 0;
+            }
+
             ViewBag.BenchPressProgress = goal.BenchPress > 0 ? Math.Min((stats.BenchPress / goal.BenchPress) * 100, 100) : 0;
             ViewBag.SquatProgress = goal.Squat > 0 ? Math.Min((stats.Squat / goal.Squat) * 100, 100) : 0;
             ViewBag.DeadLiftProgress = goal.DeadLift > 0 ? Math.Min((stats.DeadLift / goal.DeadLift) * 100, 100) : 0;
@@ -131,7 +148,25 @@ namespace GymManager.Controllers
             _context.SaveChanges();
 
             // Recalculate progress percentages.
-            int weightProgress = goal.Weight > 0 ? (int)Math.Min((stats.Weight / goal.Weight) * 100, 100) : 0;
+            int weightProgress;
+            if (goal.Weight > 0)
+            {
+                if (stats.Weight > goal.Weight)
+                {
+                    // Weight loss scenario: current weight is above the goal
+                    weightProgress = (int)Math.Min((goal.Weight / stats.Weight) * 100, 100);
+                }
+                else
+                {
+                    // Weight gain scenario: current weight is below the goal
+                    weightProgress = (int)Math.Min((stats.Weight / goal.Weight) * 100, 100);
+                }
+            }
+            else
+            {
+                weightProgress = 0;
+            }
+
             int benchPressProgress = goal.BenchPress > 0 ? (int)Math.Min((stats.BenchPress / goal.BenchPress) * 100, 100) : 0;
             int squatProgress = goal.Squat > 0 ? (int)Math.Min((stats.Squat / goal.Squat) * 100, 100) : 0;
             int deadLiftProgress = goal.DeadLift > 0 ? (int)Math.Min((stats.DeadLift / goal.DeadLift) * 100, 100) : 0;
