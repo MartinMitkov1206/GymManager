@@ -1,6 +1,11 @@
 ﻿@using Microsoft.AspNetCore.Http
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
+@{
+    // Read the unit from session; default to "kg" if not set.
+    string currentUnit = HttpContextAccessor.HttpContext.Session.GetString("Unit") ?? "kg";
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,11 +36,10 @@
                         </li>
                     </ul>
 
-                    <!-- User Authentication Links -->
-                    <div class="d-flex">
+                    <div class="d-flex align-items-center">
                         @if (HttpContextAccessor.HttpContext.Session.GetInt32("UserID") != null)
                         {
-                            <span class="navbar-text me-3" style="color: #fff;">
+                            <span class="navbar-text me-3 text-white">
                                 Welcome, @HttpContextAccessor.HttpContext.Session.GetString("UserName")!
                             </span>
                             <a class="nav-link text-danger" asp-controller="Account" asp-action="Logout">Logout</a>

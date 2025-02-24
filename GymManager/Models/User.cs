@@ -22,8 +22,11 @@ namespace GymManager.Models
 
         public bool IsEmailConfirmed { get; set; } = false;
 
-        public int Age { get; set; }
+        // Remove the 'Age' field, and replace it with DateOfBirth:
+        [Required]
+        public int Age{ get; set; }
 
+        // If you still have roles:
         public int RoleID { get; set; }
         [ForeignKey("RoleID")]
         public Role Role { get; set; }

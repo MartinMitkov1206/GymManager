@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    <!-- Use main layout -->
 }
 
 <div class="auth-container mt-5">
@@ -43,6 +42,15 @@
             <label asp-for="ConfirmPassword"></label>
             <input asp-for="ConfirmPassword" type="password" class="form-control" required />
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+
+        <!-- New Date of Birth field with min and max attributes -->
+        <div class="form-group">
+            <label asp-for="DateOfBirth"></label>
+            <input asp-for="DateOfBirth" type="date" class="form-control"
+                   min="@(DateTime.Today.AddYears(-80).ToString("yyyy-MM-dd"))"
+                   max="@(DateTime.Today.AddYears(-10).ToString("yyyy-MM-dd"))" required />
+            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
         </div>
 
         <button type="submit" class="btn btn-primary w-100 mt-3">Register</button>

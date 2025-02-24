@@ -1,0 +1,49 @@
+﻿@model GymManager.Models.Stats
+@{
+    ViewData["Title"] = "Enter Your Overall Stats";
+    // Determine initial unit; default to "kg"
+    string unit = ViewBag.Unit as string ?? "kg";
+}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+    <form asp-action="Enter" method="post">
+        <div class="mb-3">
+            <label asp-for="Weight" class="form-label">
+                Weight (<span id="unitWeightLabel">@unit</span>)
+            </label>
+            <input asp-for="Weight" class="form-control" data-original="@Model.Weight" />
+            <span asp-validation-for="Weight" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Height" class="form-label">
+                Height (cm)
+            </label>
+            <input asp-for="Height" class="form-control" />
+            <span asp-validation-for="Height" class="text-danger"></span>
+        </div>
+        
+        <div class="mb-3">
+            <label asp-for="BenchPress" class="form-label">
+                Bench Press (<span id="unitBenchPressLabel">@unit</span>)
+            </label>
+            <input asp-for="BenchPress" class="form-control" data-original="@Model.BenchPress" />
+            <span asp-validation-for="BenchPress" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Squat" class="form-label">
+                Squat (<span id="unitSquatLabel">@unit</span>)
+            </label>
+            <input asp-for="Squat" class="form-control" data-original="@Model.Squat" />
+            <span asp-validation-for="Squat" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="DeadLift" class="form-label">
+                Deadlift (<span id="unitDeadLiftLabel">@unit</span>)
+            </label>
+            <input asp-for="DeadLift" class="form-control" data-original="@Model.DeadLift" />
+            <span asp-validation-for="DeadLift" class="text-danger"></span>
+        </div>
+        
+        <button type="submit" class="btn btn-primary w-100">Save Stats</button>
+    </form>
+</div>

@@ -1,69 +1,75 @@
 ﻿@{
-    ViewData["Title"] = "My Workout Statistics";
-    // Retrieve data from ViewBag
-    var overallStats = ViewBag.OverallStats as GymManager.Models.Stats;
-    var workouts = ViewBag.Workouts as List<GymManager.Models.Workout>;
-    var selectedWorkoutStats = ViewBag.SelectedWorkoutStats as GymManager.Models.WorkoutStats;
-    int? selectedWorkoutID = ViewBag.SelectedWorkoutID as int?;
+	ViewData["Title"] = "My Workout Statistics";
+	var overallStats = ViewBag.OverallStats as GymManager.Models.Stats;
+	// Assume you pass the Age via ViewBag.UserAge, for example.
+	int? userAge = ViewBag.UserAge as int?;
+	var workouts = ViewBag.Workouts as List<GymManager.Models.Workout>;
+	var selectedWorkoutStats = ViewBag.SelectedWorkoutStats as GymManager.Models.WorkoutStats;
+	int? selectedWorkoutID = ViewBag.SelectedWorkoutID as int?;
+	string unit = ViewBag.Unit as string ?? "kg";
 }
 
 <div class="container mt-5">
-    <h2 class="text-center mb-4">My Overall Stats</h2>
-    @if(overallStats != null)
-    {
-        <div class="mb-4">
-            <p><strong>Weight:</strong> @overallStats.Weight</p>
-            <p><strong>Height:</strong> @overallStats.Height</p>
-            <p><strong>Bench Press:</strong> @overallStats.BenchPress</p>
-            <p><strong>Squat:</strong> @overallStats.Squat</p>
-            <p><strong>Deadlift:</strong> @overallStats.DeadLift</p>
-            <p><strong>Total Workouts:</strong> @overallStats.Workouts</p>
-        </div>
-    }
-    else
-    {
-        <p class="text-muted">No overall stats available. Please update your stats in your profile.</p>
-    }
+	<h2 class="text-center mb-4">My Overall Stats</h2>
+	@if (overallStats != null)
+	{
+		<div class="mb-4">
+			@if (userAge.HasValue)
+			{
+				<p><strong>Age:</strong> @userAge years</p>
+			}
+			<p><strong>Weight:</strong> @overallStats.Weight @unit</p>
+			<p><strong>Height:</strong> @overallStats.Height cm</p>
+			<p><strong>Bench Press:</strong> @overallStats.BenchPress @unit</p>
+			<p><strong>Squat:</strong> @overallStats.Squat @unit</p>
+			<p><strong>Deadlift:</strong> @overallStats.DeadLift @unit</p>
+			<p><strong>Total Workouts:</strong> @overallStats.Workouts</p>
+		</div>
+	}
+	else
+	{
+		<p class="text-muted">No overall stats available. Please update your stats in your profile.</p>
+	}
+	<!-- Rest of your view... -->
+</div>
 
-    <hr />
 
-    <h2 class="text-center mb-4">Select a Workout to View Its Statistics</h2>
-    <form method="get" action="@Url.Action("Index", "WorkoutStats")">
-        <div class="mb-3">
-            <label for="workoutId" class="form-label">Select Workout</label>
-            <select id="workoutId" name="workoutId" class="form-select">
-                <option value="">-- Select a Workout --</option>
-                <select id="workoutId" name="workoutId" class="form-select">
-                    <option value="">-- Select a Workout --</option>
-                    @foreach (var workout in workouts)
-                    {
-                        if (selectedWorkoutID.HasValue && selectedWorkoutID.Value == workout.WorkoutID)
-                        {
-                            <option value="@workout.WorkoutID" selected>
-                                Workout @workout.WorkoutID - @workout.TrainerName - @workout.Duration min
-                            </option>
-                        }
-                        else
-                        {
-                            <option value="@workout.WorkoutID">
-                                Workout @workout.WorkoutID - @workout.TrainerName - @workout.Duration min
-                            </option>
-                        }
-                    }
-                </select>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">View Workout Statistics</button>
-    </form>
+<hr />
 
-    @if (selectedWorkoutStats != null)
-    {
-        <hr />
-        <h3 class="mt-4">Workout Statistics</h3>
-        <div class="mt-3">
-            <p><strong>Workout Stat ID:</strong> @selectedWorkoutStats.WorkoutStatID</p>
-            <p><strong>Statistic Value:</strong> @selectedWorkoutStats.WorkoutStat</p>
-            <!-- Add additional workout statistics fields here if needed -->
-        </div>
-    }
+<h2 class="text-center mb-4">Select a Workout to View Its Statistics</h2>
+<form method="get" action="@Url.Action("Index", "WorkoutStats")">
+	<div class="mb-3">
+		<label for="workoutId" class="form-label">Select Workout</label>
+		<select id="workoutId" name="workoutId" class="form-select">
+			<option value="">-- Select a Workout --</option>
+			@foreach (var workout in workouts)
+			{
+				if (selectedWorkoutID.HasValue && selectedWorkoutID.Value == workout.WorkoutID)
+				{
+					<option value="@workout.WorkoutID" selected>
+						Workout @workout.WorkoutID - @workout.TrainerName - @workout.Duration min
+					</option>
+				}
+				else
+				{
+					<option value="@workout.WorkoutID">
+						Workout @workout.WorkoutID - @workout.TrainerName - @workout.Duration min
+					</option>
+				}
+			}
+		</select>
+	</div>
+	<button type="submit" class="btn btn-primary">View Workout Statistics</button>
+</form>
+
+@if (selectedWorkoutStats != null)
+{
+	<hr />
+	<h3 class="mt-4">Workout Statistics</h3>
+	<div class="mt-3">
+		<p><strong>Workout Stat ID:</strong> @selectedWorkoutStats.WorkoutStatID</p>
+		<p><strong>Statistic Value:</strong> @selectedWorkoutStats.WorkoutStat</p>
+		<!-- Additional workout statistics fields can be added here -->
+	</div>
+}
 </div>

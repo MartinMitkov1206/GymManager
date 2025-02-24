@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GymManager.Models.ViewModels
 {
@@ -16,7 +17,11 @@ namespace GymManager.Models.ViewModels
         [Required, DataType(DataType.Password), Compare("Password")]
         public string ConfirmPassword { get; set; }
 
-        public int Age { get; set; }
+        //field for Date of Birth
+        
+        [Required, DataType(DataType.Date)]
+        public DateTime DateOfBirth { get; set; }
+
         public int RoleID { get; set; } // Default role
     }
 }

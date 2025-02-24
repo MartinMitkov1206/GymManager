@@ -1,22 +1,66 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\",
+  "WorkspaceRootPath": "D:\\GymManager\\GymManager\\GymManager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|c:\\users\\pavka\\documents\\github\\gymmanager\\gymmanager\\controllers\\progresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:controllers\\progresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|d:\\gymmanager\\gymmanager\\gymmanager\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|c:\\users\\pavka\\documents\\github\\gymmanager\\gymmanager\\views\\progress\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|d:\\gymmanager\\gymmanager\\gymmanager\\views\\stats\\enter.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:views\\stats\\enter.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|d:\\gymmanager\\gymmanager\\gymmanager\\views\\progress\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:views\\progress\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|c:\\users\\pavka\\documents\\github\\gymmanager\\gymmanager\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|d:\\gymmanager\\gymmanager\\gymmanager\\controllers\\progresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:controllers\\progresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|c:\\users\\pavka\\documents\\github\\gymmanager\\gymmanager\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|d:\\gymmanager\\gymmanager\\gymmanager\\controllers\\workoutstatscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:controllers\\workoutstatscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|d:\\gymmanager\\gymmanager\\gymmanager\\views\\workoutstats\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:views\\workoutstats\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|d:\\gymmanager\\gymmanager\\gymmanager\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|d:\\gymmanager\\gymmanager\\gymmanager\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|d:\\gymmanager\\gymmanager\\gymmanager\\controllers\\statscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:controllers\\statscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|d:\\gymmanager\\gymmanager\\gymmanager\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|d:\\gymmanager\\gymmanager\\gymmanager\\models\\stats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:models\\stats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|d:\\gymmanager\\gymmanager\\gymmanager\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|d:\\gymmanager\\gymmanager\\gymmanager\\models\\workoutstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:models\\workoutstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|d:\\gymmanager\\gymmanager\\gymmanager\\models\\workout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:models\\workout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|d:\\gymmanager\\gymmanager\\gymmanager\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,15 +70,150 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
+              "Title": "WorkoutStatsController.cs",
+              "DocumentMoniker": "D:\\GymManager\\GymManager\\GymManager\\Controllers\\WorkoutStatsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\WorkoutStatsController.cs",
+              "ToolTip": "D:\\GymManager\\GymManager\\GymManager\\Controllers\\WorkoutStatsController.cs",
+              "RelativeToolTip": "Controllers\\WorkoutStatsController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-24T14:44:25.772Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\Views\\Home\\Index.cshtml",
+              "DocumentMoniker": "D:\\GymManager\\GymManager\\GymManager\\Views\\WorkoutStats\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\WorkoutStats\\Index.cshtml",
+              "ToolTip": "D:\\GymManager\\GymManager\\GymManager\\Views\\WorkoutStats\\Index.cshtml",
+              "RelativeToolTip": "Views\\WorkoutStats\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-24T07:34:31.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "D:\\GymManager\\GymManager\\GymManager\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Views\\_ViewImports.cshtml",
+              "ToolTip": "D:\\GymManager\\GymManager\\GymManager\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-24T07:34:21.54Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "D:\\GymManager\\GymManager\\GymManager\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
+              "ToolTip": "D:\\GymManager\\GymManager\\GymManager\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-24T07:34:18.141Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Enter.cshtml",
+              "DocumentMoniker": "D:\\GymManager\\GymManager\\GymManager\\Views\\Stats\\Enter.cshtml",
+              "RelativeDocumentMoniker": "Views\\Stats\\Enter.cshtml",
+              "ToolTip": "D:\\GymManager\\GymManager\\GymManager\\Views\\Stats\\Enter.cshtml*",
+              "RelativeToolTip": "Views\\Stats\\Enter.cshtml*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-24T06:53:56.475Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "StatsController.cs",
+              "DocumentMoniker": "D:\\GymManager\\GymManager\\GymManager\\Controllers\\StatsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\StatsController.cs",
+              "ToolTip": "D:\\GymManager\\GymManager\\GymManager\\Controllers\\StatsController.cs",
+              "RelativeToolTip": "Controllers\\StatsController.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAewDYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-24T06:52:35.041Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Stats.cs",
+              "DocumentMoniker": "D:\\GymManager\\GymManager\\GymManager\\Models\\Stats.cs",
+              "RelativeDocumentMoniker": "Models\\Stats.cs",
+              "ToolTip": "D:\\GymManager\\GymManager\\GymManager\\Models\\Stats.cs",
+              "RelativeToolTip": "Models\\Stats.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-24T06:49:15.979Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\GymManager\\GymManager\\GymManager\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "D:\\GymManager\\GymManager\\GymManager\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-24T06:49:07.584Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Workout.cs",
+              "DocumentMoniker": "D:\\GymManager\\GymManager\\GymManager\\Models\\Workout.cs",
+              "RelativeDocumentMoniker": "Models\\Workout.cs",
+              "ToolTip": "D:\\GymManager\\GymManager\\GymManager\\Models\\Workout.cs",
+              "RelativeToolTip": "Models\\Workout.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-24T06:43:59.208Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "WorkoutStats.cs",
+              "DocumentMoniker": "D:\\GymManager\\GymManager\\GymManager\\Models\\WorkoutStats.cs",
+              "RelativeDocumentMoniker": "Models\\WorkoutStats.cs",
+              "ToolTip": "D:\\GymManager\\GymManager\\GymManager\\Models\\WorkoutStats.cs",
+              "RelativeToolTip": "Models\\WorkoutStats.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAhwBAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-24T06:43:52.194Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\GymManager\\GymManager\\GymManager\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "D:\\GymManager\\GymManager\\GymManager\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAMwGIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-24T06:41:56.296Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\GymManager\\GymManager\\GymManager\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\GymManager\\GymManager\\GymManager\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -42,38 +221,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\Views\\Shared\\_Layout.cshtml",
+              "DocumentMoniker": "D:\\GymManager\\GymManager\\GymManager\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\GymManager\\GymManager\\GymManager\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAABEAAAAAAAAAAAAuwC0AAABrAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACkAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-20T17:56:06.267Z"
+              "WhenOpened": "2025-02-20T17:56:06.267Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\Views\\Progress\\Index.cshtml",
+              "DocumentMoniker": "D:\\GymManager\\GymManager\\GymManager\\Views\\Progress\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Progress\\Index.cshtml",
-              "ToolTip": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\Views\\Progress\\Index.cshtml",
+              "ToolTip": "D:\\GymManager\\GymManager\\GymManager\\Views\\Progress\\Index.cshtml",
               "RelativeToolTip": "Views\\Progress\\Index.cshtml",
-              "ViewState": "AgIAAGIAAAAAAAAAAAAcwHcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAKkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-02-20T17:41:49.425Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "ProgressController.cs",
-              "DocumentMoniker": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\Controllers\\ProgressController.cs",
+              "DocumentMoniker": "D:\\GymManager\\GymManager\\GymManager\\Controllers\\ProgressController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProgressController.cs",
-              "ToolTip": "C:\\Users\\pavka\\Documents\\GitHub\\GymManager\\GymManager\\Controllers\\ProgressController.cs",
+              "ToolTip": "D:\\GymManager\\GymManager\\GymManager\\Controllers\\ProgressController.cs",
               "RelativeToolTip": "Controllers\\ProgressController.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAmwC4AAABNAAAAAAAAAA==",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAcwJ0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-20T17:33:57.747Z",
               "EditorCaption": ""

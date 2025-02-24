@@ -32,31 +32,33 @@ namespace GymManager.Controllers
                 return View(model);
             }
 
-            // 🔹 Check if email is already registered
+            // Check if email is already registered
             if (_context.User.Any(u => u.Email == model.Email))
             {
                 ModelState.AddModelError("", "Email is already registered.");
                 return View(model);
             }
 
-            // 🔹 Generate Salt and Hash Password
+            // Generate Salt and Hash Password
             string salt = PasswordHelper.GenerateSalt();
             string hashedPassword = PasswordHelper.HashPassword(model.Password, salt);
 
-            // 🔹 Find the "User" role in the database
+            // Find the "User" role in the database
             var defaultRole = _context.Role.FirstOrDefault(r => r.RoleType == "User");
-
             if (defaultRole == null)
             {
                 ModelState.AddModelError("", "Default role 'User' not found in database.");
                 return View(model);
             }
 
+            // Calculate age using the CalcAgeHelper and the DateOfBirth from the model
+            int age = CalcAgeHelper.CalceAge(model.DateOfBirth);
+
             var user = new User
             {
                 UserName = model.UserName,
                 Email = model.Email,
-                Age = model.Age,
+                Age = age, // store the calculated age
                 RoleID = defaultRole.RoleID, // Set default role
                 PasswordHash = hashedPassword,
                 PasswordSalt = salt,
@@ -68,8 +70,6 @@ namespace GymManager.Controllers
 
             return RedirectToAction("Login");
         }
-
-
 
         // ** LOGIN **
         [HttpGet]
@@ -94,7 +94,7 @@ namespace GymManager.Controllers
             HttpContext.Session.SetString("UserName", user.UserName);
             HttpContext.Session.SetInt32("RoleID", user.RoleID);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Enter", "Stats");
         }
 
 
