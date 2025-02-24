@@ -549,3 +549,4 @@ C:\Users\pavka\Documents\GitHub\GymManager\GymManager\obj\Debug\net8.0\GymManage
 C:\Users\pavka\Documents\GitHub\GymManager\GymManager\obj\Debug\net8.0\GymManager.genruntimeconfig.cache
 C:\Users\pavka\Documents\GitHub\GymManager\GymManager\obj\Debug\net8.0\ref\GymManager.dll
 C:\Users\Martin Mitkov\Documents\GitHub\GymManager\GymManager\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Users\erene\Documents\GitHub\GymManager\GymManager\bin\Debug\net8.0\BCrypt.Net-Next.dll

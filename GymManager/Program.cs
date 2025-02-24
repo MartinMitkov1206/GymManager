@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using GymManager.Models; // Import IHttpContextAccessor
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
