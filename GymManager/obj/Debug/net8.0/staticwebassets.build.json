@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bK/vItdUvRmZGQMiIxP1VnzSGJ6lVkxyZt8cl3Tc9kI=",
+  "Hash": "swuLUd+0MT8R4wyVaHjo94C/EJz0LoMhPubpK+lr0RE=",
   "Source": "GymManager",
   "BasePath": "_content/GymManager",
   "Mode": "Default",
@@ -131,12 +131,12 @@
       "OriginalItemSpec": "wwwroot\\Images\\ErkoTrainer.jpg"
     },
     {
-      "Identity": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\wwwroot\\Images\\IMG_6533.JPEG",
+      "Identity": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\wwwroot\\Images\\JulyTrainer.jpg",
       "SourceId": "GymManager",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\wwwroot\\",
       "BasePath": "_content/GymManager",
-      "RelativePath": "Images/IMG_6533.JPEG",
+      "RelativePath": "Images/JulyTrainer.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -147,7 +147,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\IMG_6533.JPEG"
+      "OriginalItemSpec": "wwwroot\\Images\\JulyTrainer.jpg"
     },
     {
       "Identity": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\wwwroot\\Images\\KamenTrainer.jpg",
