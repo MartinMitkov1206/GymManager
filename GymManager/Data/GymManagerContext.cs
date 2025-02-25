@@ -35,17 +35,15 @@ namespace GymManager.Data
                 .HasForeignKey(tc => tc.ClientID)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            // Seed Roles (if not already seeded)
+            //Seed Roles (if not already seeded)
             /*modelBuilder.Entity<Role>().HasData(
                 modelBuilder.Entity<Role>().HasData(
 
                 new Role { RoleID = 1, RoleType = "User" },
                 new Role { RoleID = 2, RoleType = "Trainer" }
             ));*/
-        }
-
             // Temporarily seed eight trainer accounts as default users (RoleID = 1)
-            /*modelBuilder.Entity<User>().HasData(
+            modelBuilder.Entity<User>().HasData(
                 new User
                 {
                     UserID = 101,
@@ -54,7 +52,7 @@ namespace GymManager.Data
                     PasswordHash = "1245",
                     PasswordSalt = "1245",
                     Age = 30,
-                    RoleID = 1, // Temporarily not set as Trainer
+                    //RoleID = 1, // Temporarily not set as Trainer
                     CreatedAt = DateTime.UtcNow,
                     UpdatedAt = DateTime.UtcNow
                 },
@@ -143,7 +141,7 @@ namespace GymManager.Data
                     UpdatedAt = DateTime.UtcNow
                 }
             );
-        }*/
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

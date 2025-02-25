@@ -1,0 +1,113 @@
+﻿@model int
+
+@{
+    ViewData["Title"] = "Schedule Workout";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Schedule Workout with Trainer @Model</h2>
+
+    <!-- Training Type Selection -->
+    <div class="text-center mb-4">
+        <label class="form-label">Choose Training Type</label>
+        <div>
+            <input type="radio" id="individual" name="trainingType" value="Individual" checked />
+            <label for="individual" class="me-3">Individual</label>
+
+            <input type="radio" id="group" name="trainingType" value="Group" />
+            <label for="group">Group</label>
+        </div>
+    </div>
+
+    <!-- Date Picker -->
+    <div class="text-center mb-4">
+        <label for="datePicker" class="form-label">Select a Date</label>
+        <input type="date" id="datePicker" class="form-control d-inline-block w-auto" />
+    </div>
+
+    <!-- Time Slots -->
+    <div class="text-center">
+        <h4>Select a Time</h4>
+        <div class="d-flex flex-wrap justify-content-center" id="timeSlots">
+            <!-- We'll generate times dynamically in JS -->
+        </div>
+    </div>
+
+    <!-- Hidden form to submit everything -->
+    <form method="post" asp-action="Schedule" asp-controller="Workouts" class="text-center mt-4">
+        <input type="hidden" name="trainerId" value="@Model" />
+        <input type="hidden" name="selectedDate" id="selectedDate" />
+        <input type="hidden" name="selectedTime" id="selectedTime" />
+
+        <!-- Because the radio buttons have name="trainingType", they will be posted automatically -->
+        <button type="submit" class="btn btn-primary">Confirm</button>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        // We'll store references to key elements
+        const timeSlotsContainer = document.getElementById('timeSlots');
+        const selectedTimeInput = document.getElementById('selectedTime');
+        const selectedDateInput = document.getElementById('selectedDate');
+        const datePicker = document.getElementById('datePicker');
+
+        // 1) Listen for date changes
+        datePicker.addEventListener('change', e => {
+            selectedDateInput.value = e.target.value;
+        });
+
+        // 2) Generate time slots depending on training type
+        function generateTimeSlots(trainingType) {
+            // Clear any existing buttons
+            timeSlotsContainer.innerHTML = '';
+
+            if (trainingType === 'Group') {
+                // Round hours only (10:00, 11:00, ..., 20:00)
+                for (let hour = 10; hour <= 20; hour++) {
+                    const hh = hour.toString().padStart(2, '0');
+                    const t = `${hh}:00`;
+                    createTimeButton(t);
+                }
+            } else {
+                // Individual => 15-min increments from 10:00 to 20:00
+                for (let hour = 10; hour <= 20; hour++) {
+                    for (let min = 0; min < 60; min += 15) {
+                        const hh = hour.toString().padStart(2, '0');
+                        const mm = min.toString().padStart(2, '0');
+                        const t = `${hh}:${mm}`;
+                        createTimeButton(t);
+                    }
+                }
+            }
+        }
+
+        // 3) Helper to create a button for a given time
+        function createTimeButton(timeStr) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'btn btn-outline-secondary m-1 time-btn';
+            btn.textContent = timeStr;
+            btn.addEventListener('click', () => {
+                // Unselect any previous
+                document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('btn-success'));
+                // Mark this one as selected
+                btn.classList.add('btn-success');
+                // Store in hidden field
+                selectedTimeInput.value = timeStr;
+            });
+            timeSlotsContainer.appendChild(btn);
+        }
+
+        // 4) Listen for changes on the radio buttons to re-generate times
+        const trainingRadios = document.querySelectorAll('input[name="trainingType"]');
+        trainingRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                generateTimeSlots(radio.value);
+            });
+        });
+
+        // 5) On page load, generate times for the default (Individual)
+        generateTimeSlots('Individual');
+    </script>
+}

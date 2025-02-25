@@ -21,12 +21,15 @@
     <!-- Features Section -->
     <div class="row text-center mt-5">
         <div class="col-md-4">
-            <div class="card shadow-sm p-4">
-                <i class="bi bi-calendar2-check display-4 text-primary"></i>
-                <h3 class="mt-3">Schedule Workouts</h3>
-                <p>Plan your gym sessions and track progress effortlessly.</p>
-            </div>
+            <a asp-controller="Workouts" asp-action="Schedule" style="text-decoration: none; color: inherit;">
+                <div class="card shadow-sm p-4">
+                    <i class="bi bi-calendar2-check display-4 text-primary"></i>
+                    <h3 class="mt-3">Schedule Workouts</h3>
+                    <p>Plan your gym sessions and track progress effortlessly.</p>
+                </div>
+            </a>
         </div>
+
         <div class="col-md-4">
             <a asp-controller="WorkoutStats" asp-action="Index" style="text-decoration: none; color: inherit;">
                 <div class="card shadow-sm p-4">
@@ -45,6 +48,7 @@
                 </div>
             </a>
         </div>
+
     </div>
 
     <!-- Trainers Section -->
@@ -156,18 +160,18 @@
             $(".trainer-card").on("click", function () {
                 var trainerId = $(this).data("trainer-id");
 
-                // Remove previous selection styles/messages from other cards
+                // Remove previous selection
                 $(".trainer-card").removeClass("border border-primary");
                 $(".trainer-card .selected-message").remove();
 
-                // Highlight the selected card and show "Selected"
+                // Highlight the clicked trainer
                 $(this).addClass("border border-primary");
                 $(this).find(".card-body").append('<div class="selected-message text-success mt-2">Selected</div>');
 
-                // OPTIONAL: If you want to redirect after selection, uncomment:
-                // setTimeout(function () {
-                //     window.location.href = '@Url.Action("Book", "Trainers")' + '?trainerId=' + trainerId;
-                // }, 500);
+                // After short delay, redirect to store trainer in session
+                setTimeout(function () {
+                    window.location.href = '@Url.Action("SelectTrainer", "Trainers")' + '?trainerId=' + trainerId;
+                }, 500);
             });
         });
     </script>
