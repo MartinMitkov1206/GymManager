@@ -1,50 +1,70 @@
+﻿using System;
 using GymManager.Data;
+using GymManager.Helpers;
+using GymManager.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Http;
-using GymManager.Models; // Import IHttpContextAccessor
-
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services
 builder.Services.AddDbContext<GymManagerContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-// **Register IHttpContextAccessor**
 builder.Services.AddHttpContextAccessor();
-
 builder.Services.AddControllersWithViews();
-
-// **Add Session Services**
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(30); // Session timeout (30 minutes)
-    options.Cookie.HttpOnly = true; // Prevents JavaScript access
-    options.Cookie.IsEssential = true; // Ensures session works even if tracking is disabled
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
 });
-
-// **Add Authentication Middleware (Needed for Login)**
 builder.Services.AddAuthentication("GymManagerAuth")
     .AddCookie("GymManagerAuth", options =>
     {
-        options.LoginPath = "/Account/Login";  // Redirect to Login if unauthorized
-        options.AccessDeniedPath = "/Account/AccessDenied"; // Redirect if no access
+        options.LoginPath = "/Account/Login";
+        options.AccessDeniedPath = "/Account/AccessDenied";
     });
 
-
 var app = builder.Build();
+
+// ──────────────── SEED DATABASE ON STARTUP ───────────────────────────
 using (var scope = app.Services.CreateScope())
 {
-    var context = scope.ServiceProvider.GetRequiredService<GymManagerContext>();
+    var ctx = scope.ServiceProvider.GetRequiredService<GymManagerContext>();
+    // apply any pending migrations
+    ctx.Database.Migrate();
 
-    if (!context.Role.Any(r => r.RoleType == "User"))
+    // 1) Seed Roles if missing
+    if (!ctx.Role.Any(r => r.RoleType == "User"))
+        ctx.Role.Add(new Role { RoleType = "User" });
+    if (!ctx.Role.Any(r => r.RoleType == "Trainer"))
+        ctx.Role.Add(new Role { RoleType = "Trainer" });
+    ctx.SaveChanges();
+
+    // 2) Seed the 8 trainer accounts if none exist yet
+    var trainerRoleId = ctx.Role.Single(r => r.RoleType == "Trainer").RoleID;
+    if (!ctx.User.Any(u => u.RoleID == trainerRoleId))
     {
-        context.Role.Add(new Role { RoleType = "User" });
-        context.SaveChanges();
+        var salt = PasswordHelper.GenerateSalt();
+        var hash = PasswordHelper.HashPassword("1245", salt);
+
+        var trainers = new[]
+        {
+            new User { UserName = "QsenTrainer", Email = "qsentrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new User { UserName = "KamenTrainer", Email = "kamentrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new User { UserName = "MartinTrainer", Email = "martintrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new User { UserName = "ErenTrainer", Email = "erentrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new User { UserName = "PavelTrainer", Email = "paveltrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new User { UserName = "MishoTrainer", Email = "mishotrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new User { UserName = "MiroTrainer", Email = "mirotrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new User { UserName = "JulyTrainer", Email = "julytrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+        };
+
+        ctx.User.AddRange(trainers);
+        ctx.SaveChanges();
     }
 }
+// ────────────────────────────────────────────────────────────────────────
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -58,18 +78,12 @@ else
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
-// **Enable Sessions**
 app.UseSession();
-
-// **Enable Authentication and Authorization**
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Configure default route
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
 
 app.Run();

@@ -49,7 +49,7 @@ namespace GymManager.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("Goal");
+                    b.ToTable("Goal", (string)null);
                 });
 
             modelBuilder.Entity("GymManager.Models.Role", b =>
@@ -66,7 +66,7 @@ namespace GymManager.Migrations
 
                     b.HasKey("RoleID");
 
-                    b.ToTable("Role");
+                    b.ToTable("Role", (string)null);
                 });
 
             modelBuilder.Entity("GymManager.Models.Stats", b =>
@@ -102,7 +102,7 @@ namespace GymManager.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("Stats");
+                    b.ToTable("Stats", (string)null);
                 });
 
             modelBuilder.Entity("GymManager.Models.TrainerClient", b =>
@@ -125,7 +125,7 @@ namespace GymManager.Migrations
 
                     b.HasIndex("TrainerID");
 
-                    b.ToTable("TrainerClients");
+                    b.ToTable("TrainerClients", (string)null);
                 });
 
             modelBuilder.Entity("GymManager.Models.User", b =>
@@ -172,7 +172,7 @@ namespace GymManager.Migrations
 
                     b.HasIndex("RoleID");
 
-                    b.ToTable("User");
+                    b.ToTable("User", (string)null);
 
                     b.HasData(
                         new
@@ -309,7 +309,7 @@ namespace GymManager.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("Workout");
+                    b.ToTable("Workout", (string)null);
                 });
 
             modelBuilder.Entity("GymManager.Models.WorkoutStats", b =>
@@ -327,7 +327,7 @@ namespace GymManager.Migrations
 
                     b.HasIndex("WorkoutID");
 
-                    b.ToTable("WorkoutStats");
+                    b.ToTable("WorkoutStats", (string)null);
                 });
 
             modelBuilder.Entity("GymManager.Models.WorkoutType", b =>
@@ -344,7 +344,7 @@ namespace GymManager.Migrations
 
                     b.HasKey("WorkoutTypeID");
 
-                    b.ToTable("WorkoutType");
+                    b.ToTable("WorkoutType", (string)null);
                 });
 
             modelBuilder.Entity("GymManager.Models.Goal", b =>
