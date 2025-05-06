@@ -31,26 +31,35 @@ namespace GymManager.Controllers
         [HttpPost]
         public IActionResult Schedule(int trainerId, string selectedDate, string selectedTime, string trainingType)
         {
-            // Check if the user is logged in
-            int? userId = HttpContext.Session.GetInt32("UserID");
-            if (userId == null)
-            {
+            // ensure logged in
+            if (HttpContext.Session.GetInt32("UserID") == null)
                 return RedirectToAction("Login", "Account");
-            }
 
-            // Validate the input
+            // must have date/time
             if (string.IsNullOrEmpty(selectedDate) || string.IsNullOrEmpty(selectedTime))
             {
-                // Missing date or time; re-display the form
-                return RedirectToAction("Schedule");
+                TempData["ErrorMessage"] = "Please choose both a date and a time.";
+                return RedirectToAction("Schedule", new { trainerId });
             }
 
-            // Parse the date/time if needed (for example)
-            // DateTime bookingDateTime = DateTime.Parse($"{selectedDate} {selectedTime}");
+            // parse into a DateTime
+            if (!DateTime.TryParse($"{selectedDate} {selectedTime}", out var booking))
+            {
+                TempData["ErrorMessage"] = "Could not understand that date/time.";
+                return RedirectToAction("Schedule", new { trainerId });
+            }
 
-            // Save the booking or perform additional processing here
+            // no past bookings
+            if (booking < DateTime.Now)
+            {
+                TempData["ErrorMessage"] = "You can’t schedule a session in the past.";
+                return RedirectToAction("Schedule", new { trainerId });
+            }
+
+            // TODO: save your booking to the database here...
 
             return RedirectToAction("Index", "Home");
         }
     }
-}
+    }
+

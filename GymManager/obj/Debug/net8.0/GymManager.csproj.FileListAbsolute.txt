@@ -550,3 +550,7 @@ C:\Users\pavka\Documents\GitHub\GymManager\GymManager\obj\Debug\net8.0\GymManage
 C:\Users\pavka\Documents\GitHub\GymManager\GymManager\obj\Debug\net8.0\ref\GymManager.dll
 C:\Users\Martin Mitkov\Documents\GitHub\GymManager\GymManager\bin\Debug\net8.0\BCrypt.Net-Next.dll
 C:\Users\erene\Documents\GitHub\GymManager\GymManager\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Users\pavka\Documents\GitHub\GymManager\GymManager\bin\Debug\net8.0\GymManager.staticwebassets.endpoints.json
+C:\Users\pavka\Documents\GitHub\GymManager\GymManager\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\pavka\Documents\GitHub\GymManager\GymManager\obj\Debug\net8.0\staticwebassets\msbuild.GymManager.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\pavka\Documents\GitHub\GymManager\GymManager\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
