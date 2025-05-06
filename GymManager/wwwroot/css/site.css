@@ -135,4 +135,4 @@ footer {
     color: var(--text-color);
     margin-top: 2rem;
 }
-
+/* force all dark tables to use white text */

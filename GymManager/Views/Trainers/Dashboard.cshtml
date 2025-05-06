@@ -1,0 +1,105 @@
+﻿@model GymManager.Models.ViewModels.TrainerDashboardViewModel
+@using GymManager.Data
+@inject GymManagerContext _db
+
+@{
+    ViewData["Title"] = "Trainer Dashboard";
+}
+
+<h2 class="mb-4">Your Dashboard</h2>
+
+<ul class="nav nav-tabs bg-dark" id="tabs">
+    <li class="nav-item">
+        <a class="nav-link active text-dark" data-bs-toggle="tab" href="#tabWorkouts">My Bookings</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-white" data-bs-toggle="tab" href="#tabProgress">Client Progress</a>
+    </li>
+</ul>
+
+<div class="tab-content mt-3">
+    <!-- My Bookings now uses cards like Client Progress -->
+    <div id="tabWorkouts" class="tab-pane fade show active">
+        @foreach (var w in Model.MyWorkouts)
+        {
+            <div class="card mb-2 bg-dark text-white">
+                <div class="card-body p-2">
+                    <div class="row align-items-center">
+                        <div class="col-4 text-start">
+                            <strong>@w.User.UserName</strong>
+                        </div>
+                        <div class="col-4 text-center">
+                            @w.ScheduledAt.ToString("g")
+                        </div>
+                        <div class="col-4 text-center">
+                            @(w.IsIndividual ? "Individual" : "Group")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+
+
+
+
+    <!-- Client Progress stays the same -->
+    <div id="tabProgress" class="tab-pane fade">
+        @foreach (var c in Model.MyClients)
+        {
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">@c.UserName</h5>
+                    @{
+                        var stats = _db.Stats
+                        .FirstOrDefault(s => s.UserID == c.UserID)
+                        ?? new GymManager.Models.Stats { UserID = c.UserID };
+                    }
+                    <form asp-action="UpdateClientProgress"
+                          asp-controller="Trainers"
+                          method="post"
+                          class="row g-3">
+                        <input type="hidden" name="clientId" value="@c.UserID" />
+                        <div class="col-md-3">
+                            <label class="form-label">Weight</label>
+                            <input name="weight" class="form-control" value="@stats.Weight" />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Bench</label>
+                            <input name="benchPress" class="form-control" value="@stats.BenchPress" />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Squat</label>
+                            <input name="squat" class="form-control" value="@stats.Squat" />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Deadlift</label>
+                            <input name="deadlift" class="form-control" value="@stats.DeadLift" />
+                        </div>
+                        <div class="col-12 text-end mt-2">
+                            <button class="btn btn-primary">Save Progress</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.querySelectorAll('#tabs a[data-bs-toggle="tab"]').forEach(function (link) {
+            link.addEventListener('shown.bs.tab', function (e) {
+                // reset all links to white
+                document.querySelectorAll('#tabs .nav-link').forEach(function (l) {
+                        l.classList.remove('text-dark');
+                            l.classList.add('text-white');
+                        });
+                        // make the active one dark
+                        e.target.classList.remove('text-white');
+                        e.target.classList.add('text-dark');
+                    });
+                });
+    </script>
+}

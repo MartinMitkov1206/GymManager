@@ -1,27 +1,60 @@
-﻿@{
-    ViewData["Title"] = "Welcome to GymManager";
-}
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
 
-<div class="container mt-5">
-    <!-- Hero Section -->
+    ViewData["Title"] = "Welcome to GymManager";
+    var userId = HttpContextAccessor.HttpContext.Session.GetInt32("UserID");
+    var roleId = HttpContextAccessor.HttpContext.Session.GetInt32("RoleID");
+    }
+
+    
+
     <div class="jumbotron text-center p-5 rounded">
         <h1 class="display-4">Welcome to GymManager</h1>
         <p class="lead">Your ultimate fitness companion! Track workouts, set goals, and stay motivated.</p>
+
         @if (Context.Session.GetInt32("UserID") == null)
         {
             <a class="btn btn-light btn-lg me-2" asp-controller="Account" asp-action="Register">Get Started</a>
             <a class="btn btn-outline-light btn-lg" asp-controller="Account" asp-action="Login">Login</a>
+        }
+        else if (roleId == 4)
+        {
+            <a class="btn btn-light btn-lg me-2" asp-controller="Trainers" asp-action="Dashboard">Go to Trainer Dashboard</a>
         }
         else
         {
             <a class="btn btn-light btn-lg" asp-controller="Dashboard" asp-action="Index">Go to Dashboard</a>
         }
     </div>
-
-    <!-- Features Section -->
-    <div class="row text-center mt-5">
-        <div class="col-md-4">
-            <a asp-controller="Workouts" asp-action="Schedule" style="text-decoration: none; color: inherit;">
+<div class="row text-center mt-5">
+    @if (userId != null && roleId == 4)
+    {
+        <!-- Trainer sees TWO cards that link to the two tabs on their dashboard -->
+        <div class="col-md-6 mb-4">
+            <a href="@Url.Action("Dashboard","Trainers")#tabWorkouts" class="text-decoration-none text-reset">
+                <div class="card shadow-sm p-4">
+                    <i class="bi bi-calendar2-check display-4 text-primary"></i>
+                    <h3 class="mt-3">My Bookings</h3>
+                    <p>View all your upcoming client sessions.</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 mb-4">
+            <a href="@Url.Action("Dashboard","Trainers")#tabProgress" class="text-decoration-none text-reset">
+                <div class="card shadow-sm p-4">
+                    <i class="bi bi-people-fill display-4 text-success"></i>
+                    <h3 class="mt-3">Client Progress</h3>
+                    <p>Edit your clients’ stats & track progress.</p>
+                </div>
+            </a>
+        </div>
+    }
+    else
+    {
+        <!-- Everyone else sees the original three feature cards -->
+        <div class="col-md-4 mb-4">
+            <a asp-controller="Workouts" asp-action="Schedule" class="text-decoration-none text-reset">
                 <div class="card shadow-sm p-4">
                     <i class="bi bi-calendar2-check display-4 text-primary"></i>
                     <h3 class="mt-3">Schedule Workouts</h3>
@@ -29,9 +62,8 @@
                 </div>
             </a>
         </div>
-
-        <div class="col-md-4">
-            <a asp-controller="WorkoutStats" asp-action="Index" style="text-decoration: none; color: inherit;">
+        <div class="col-md-4 mb-4">
+            <a asp-controller="WorkoutStats" asp-action="Index" class="text-decoration-none text-reset">
                 <div class="card shadow-sm p-4">
                     <i class="bi bi-bar-chart-fill display-4 text-success"></i>
                     <h3 class="mt-3">Track Progress</h3>
@@ -39,8 +71,8 @@
                 </div>
             </a>
         </div>
-        <div class="col-md-4">
-            <a asp-controller="Progress" asp-action="Index" style="text-decoration: none; color: inherit;">
+        <div class="col-md-4 mb-4">
+            <a asp-controller="Progress" asp-action="Index" class="text-decoration-none text-reset">
                 <div class="card shadow-sm p-4">
                     <i class="bi bi-trophy-fill display-4 text-warning"></i>
                     <h3 class="mt-3">Achieve Goals</h3>
@@ -48,16 +80,19 @@
                 </div>
             </a>
         </div>
-
-    </div>
+    }
+</div>
+     
 
     <!-- Trainers Section -->
+    @if (userId != null && roleId == 3)
+    {
     <div class="container mt-5">
         <h2 class="text-center mb-4">Meet Our Trainers</h2>
         <div class="row">
             <!-- Trainer 1 -->
             <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card trainer-card" data-trainer-id="109">
+                <div class="card trainer-card" data-trainer-id="110">
                     <img src="../Images/QsenTrainer.jpg" class="card-img-top img-fluid" alt="Trainer Qsen">
                     <div class="card-body text-center">
                         <h5 class="card-title">Qsen Gigov</h5>
@@ -66,7 +101,7 @@
             </div>
             <!-- Trainer 2 -->
             <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card trainer-card" data-trainer-id="110">
+                <div class="card trainer-card" data-trainer-id="111">
                     <img src="../Images/KamenTrainer.jpg" class="card-img-top img-fluid" alt="Trainer Kamen">
                     <div class="card-body text-center">
                         <h5 class="card-title">Kamen Ivanov</h5>
@@ -75,7 +110,7 @@
             </div>
             <!-- Trainer 3 -->
             <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card trainer-card" data-trainer-id="111">
+                <div class="card trainer-card" data-trainer-id="112">
                     <img src="../Images/MartiTrainer.jpeg" class="card-img-top img-fluid" alt="Trainer Martin">
                     <div class="card-body text-center">
                         <h5 class="card-title">Martin Mitkov</h5>
@@ -84,7 +119,7 @@
             </div>
             <!-- Trainer 4 -->
             <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card trainer-card" data-trainer-id="112">
+                <div class="card trainer-card" data-trainer-id="113">
                     <img src="~/images/ErkoTrainer.jpg" class="card-img-top img-fluid" alt="Trainer Erko">
                     <div class="card-body text-center">
                         <h5 class="card-title">Eren Steliyanov</h5>
@@ -93,7 +128,7 @@
             </div>
             <!-- Trainer 5 -->
             <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card trainer-card" data-trainer-id="113">
+                <div class="card trainer-card" data-trainer-id="114">
                     <img src="../Images/PavkoTrainer.jpg" class="card-img-top img-fluid" alt="Trainer Pavko">
                     <div class="card-body text-center">
                         <h5 class="card-title">Pavel Malinovski</h5>
@@ -102,7 +137,7 @@
             </div>
             <!-- Trainer 6 -->
             <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card trainer-card" data-trainer-id="114">
+                <div class="card trainer-card" data-trainer-id="115">
                     <img src="../Images/MishoTrainer.jpg" class="card-img-top img-fluid" alt="Trainer Muhi">
                     <div class="card-body text-center">
                         <h5 class="card-title">Mihail Bobevski</h5>
@@ -111,7 +146,7 @@
             </div>
             <!-- Trainer 7 -->
             <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card trainer-card" data-trainer-id="115">
+                <div class="card trainer-card" data-trainer-id="116">
                     <img src="../Images/MiroTrainer.jpg" class="card-img-top img-fluid" alt="Trainer Miro">
                     <div class="card-body text-center">
                         <h5 class="card-title">Miroslav Nedyalkov</h5>
@@ -120,7 +155,7 @@
             </div>
             <!-- Trainer 8 -->
             <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card trainer-card" data-trainer-id="116">
+                <div class="card trainer-card" data-trainer-id="117">
                     <img src="../Images/JulyTrainer.jpg" class="card-img-top img-fluid" alt="Trainer July">
                     <div class="card-body text-center">
                         <h5 class="card-title">Julian Shtirkov</h5>
@@ -129,6 +164,7 @@
             </div>
         </div>
     </div>
+    }
 
     <!-- Testimonials -->
     <div class="mt-5 text-center">
@@ -156,6 +192,7 @@
 
 @section Scripts {
     <script>
+        document.querySelectorAll('#trainerTabs a').forEach(el => new bootstrap.Tab(el));
         $(document).ready(function () {
             $(".trainer-card").on("click", function () {
                 var trainerId = $(this).data("trainer-id");
