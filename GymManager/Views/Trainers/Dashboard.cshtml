@@ -6,9 +6,7 @@
     ViewData["Title"] = "Trainer Dashboard";
 }
 
-<h2 class="mb-4">Your Dashboard</h2>
-
-<ul class="nav nav-tabs bg-dark" id="tabs">
+<ul class="nav nav-tabs" id="tabs">
     <li class="nav-item">
         <a class="nav-link active text-dark" data-bs-toggle="tab" href="#tabWorkouts">My Bookings</a>
     </li>
@@ -18,36 +16,45 @@
 </ul>
 
 <div class="tab-content mt-3">
-    <!-- My Bookings now uses cards like Client Progress -->
     <div id="tabWorkouts" class="tab-pane fade show active">
         @foreach (var w in Model.MyWorkouts)
         {
-            <div class="card mb-2 bg-dark text-white">
-                <div class="card-body p-2">
+            <div class="card mb-2 text-white">
+                <div class="card-body py-2">
                     <div class="row align-items-center">
-                        <div class="col-4 text-start">
+                        <div class="col-3">
                             <strong>@w.User.UserName</strong>
                         </div>
-                        <div class="col-4 text-center">
+                        <div class="col-3 text-center">
                             @w.ScheduledAt.ToString("g")
                         </div>
-                        <div class="col-4 text-center">
+                        <div class="col-3 text-center">
                             @(w.IsIndividual ? "Individual" : "Group")
+                        </div>
+                        <div class="col-3 text-end">
+                            <form asp-action="DeleteBooking" asp-controller="Trainers" method="post">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="workoutId" value="@w.WorkoutID" />
+                                <button type="submit" class="btn btn-outline-danger btn-sm">
+                                    🗑️
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         }
     </div>
-
-
-
-
+    <div id="tabProgress" class="tab-pane fade">
+        @* …your Client Progress cards… *@
+    </div>
+    </div>
 
     <!-- Client Progress stays the same -->
     <div id="tabProgress" class="tab-pane fade">
         @foreach (var c in Model.MyClients)
         {
+
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">@c.UserName</h5>
@@ -78,7 +85,7 @@
                             <input name="deadlift" class="form-control" value="@stats.DeadLift" />
                         </div>
                         <div class="col-12 text-end mt-2">
-                            <button class="btn btn-primary">Save Progress</button>
+                                <button class="btn btn-primary">Save Progress</button>
                         </div>
                     </form>
                 </div>

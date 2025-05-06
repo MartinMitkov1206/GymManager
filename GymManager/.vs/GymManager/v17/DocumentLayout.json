@@ -7,20 +7,27 @@
       "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:views\\trainers\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|c:\\users\\erene\\documents\\github\\gymmanager\\gymmanager\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|c:\\users\\erene\\documents\\github\\gymmanager\\gymmanager\\controllers\\trainercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:controllers\\trainercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|c:\\users\\erene\\documents\\github\\gymmanager\\gymmanager\\models\\stats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:models\\stats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erene\\AppData\\Local\\Temp\\cgdb1xkd..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|c:\\users\\erene\\documents\\github\\gymmanager\\gymmanager\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|c:\\users\\erene\\documents\\github\\gymmanager\\gymmanager\\data\\gymmanagercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:data\\gymmanagercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|c:\\users\\erene\\documents\\github\\gymmanager\\gymmanager\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|c:\\users\\erene\\documents\\github\\gymmanager\\gymmanager\\controllers\\trainercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:controllers\\trainercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|c:\\users\\erene\\documents\\github\\gymmanager\\gymmanager\\data\\gymmanagercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:data\\gymmanagercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|c:\\users\\erene\\documents\\github\\gymmanager\\gymmanager\\views\\home\\_trainerprogresseditor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -58,10 +65,6 @@
       "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:migrations\\gymmanagercontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|c:\\users\\erene\\documents\\github\\gymmanager\\gymmanager\\models\\stats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:models\\stats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/GymManagerDB/True/SqlTable/dbo.TrainerClients.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     },
     {
@@ -91,6 +94,12 @@
     {
       "AbsoluteMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|c:\\users\\erene\\documents\\github\\gymmanager\\gymmanager\\migrations\\20250225164527_addtrainerclienttable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C760F5B2-4895-45A5-A763-B41127AFEC20}|GymManager.csproj|solutionrelative:migrations\\20250225164527_addtrainerclienttable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erene\\AppData\\Local\\Temp\\cgdb1xkd..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erene\\AppData\\Local\\Temp\\cgdb1xkd..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame"
     }
   ],
   "DocumentGroupContainers": [
@@ -100,11 +109,22 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
+              "Title": "SQLQuery2.sql ",
+              "DocumentMoniker": "C:\\Users\\erene\\AppData\\Local\\Temp\\cgdb1xkd..sql",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\cgdb1xkd..sql",
+              "ToolTip": "SQLQuery2.sql *",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-05-06T17:03:18.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
@@ -117,33 +137,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "TrainerController.cs",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Controllers\\TrainerController.cs",
               "RelativeDocumentMoniker": "Controllers\\TrainerController.cs",
-              "ToolTip": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Controllers\\TrainerController.cs",
-              "RelativeToolTip": "Controllers\\TrainerController.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwBoAAAA1AAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Controllers\\TrainerController.cs*",
+              "RelativeToolTip": "Controllers\\TrainerController.cs*",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAIwIQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-06T14:05:17.879Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
               "ToolTip": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAAAJwAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-02-20T18:00:58.488Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
@@ -160,16 +180,16 @@
               "Title": "Dashboard.cshtml",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Views\\Trainers\\Dashboard.cshtml",
               "RelativeDocumentMoniker": "Views\\Trainers\\Dashboard.cshtml",
-              "ToolTip": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Views\\Trainers\\Dashboard.cshtml*",
-              "RelativeToolTip": "Views\\Trainers\\Dashboard.cshtml*",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAuwCkAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Views\\Trainers\\Dashboard.cshtml",
+              "RelativeToolTip": "Views\\Trainers\\Dashboard.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAwwB8AAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-06T14:09:55.125Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 2,
               "Title": "Stats.cs",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Models\\Stats.cs",
               "RelativeDocumentMoniker": "Models\\Stats.cs",
@@ -182,7 +202,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "GymManagerContext.cs",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Data\\GymManagerContext.cs",
               "RelativeDocumentMoniker": "Data\\GymManagerContext.cs",
@@ -195,7 +215,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "_TrainerProgressEditor.cshtml",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Views\\Home\\_TrainerProgressEditor.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\_TrainerProgressEditor.cshtml",
@@ -208,7 +228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
@@ -221,7 +241,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "TrainerClient.cs",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Models\\TrainerClient.cs",
               "RelativeDocumentMoniker": "Models\\TrainerClient.cs",
@@ -234,7 +254,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Views\\Progress\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Progress\\Index.cshtml",
@@ -247,7 +267,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -260,7 +280,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "dbo.User [Data]",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/GymManagerDB/True/SqlTable/dbo.User.sql",
               "ToolTip": "dbo.User [Data]",
@@ -269,7 +289,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "PasswordHelper.cs",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Helpers\\PasswordHelper.cs",
               "RelativeDocumentMoniker": "Helpers\\PasswordHelper.cs",
@@ -282,7 +302,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "GymManagerContextModelSnapshot.cs",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Migrations\\GymManagerContextModelSnapshot.cs",
               "RelativeDocumentMoniker": "Migrations\\GymManagerContextModelSnapshot.cs",
@@ -295,7 +315,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "20250225182228_SeedTrainerAccounts.cs",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Migrations\\20250225182228_SeedTrainerAccounts.cs",
               "RelativeDocumentMoniker": "Migrations\\20250225182228_SeedTrainerAccounts.cs",
@@ -308,7 +328,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "dbo.TrainerClients [Data]",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/GymManagerDB/True/SqlTable/dbo.TrainerClients.sql",
               "ToolTip": "dbo.TrainerClients [Data]",
@@ -317,7 +337,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "20250225164527_AddTrainerClientTable.cs",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Migrations\\20250225164527_AddTrainerClientTable.cs",
               "RelativeDocumentMoniker": "Migrations\\20250225164527_AddTrainerClientTable.cs",
@@ -330,7 +350,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "StatsController.cs",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Controllers\\StatsController.cs",
               "RelativeDocumentMoniker": "Controllers\\StatsController.cs",
@@ -343,7 +363,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "WorkoutStats.cs",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Models\\WorkoutStats.cs",
               "RelativeDocumentMoniker": "Models\\WorkoutStats.cs",
@@ -356,7 +376,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "PasswordResetToken.cs",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Models\\PasswordResetToken.cs",
               "RelativeDocumentMoniker": "Models\\PasswordResetToken.cs",
@@ -369,7 +389,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "ProgressController.cs",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Controllers\\ProgressController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProgressController.cs",
@@ -382,7 +402,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\erene\\Documents\\GitHub\\GymManager\\GymManager\\Views\\WorkoutStats\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\WorkoutStats\\Index.cshtml",

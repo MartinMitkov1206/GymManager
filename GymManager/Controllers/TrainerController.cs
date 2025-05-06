@@ -100,6 +100,36 @@ namespace GymManager.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Dashboard));
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteBooking(int workoutId)
+        {
+            var userId = HttpContext.Session.GetInt32("UserID");
+            var roleId = HttpContext.Session.GetInt32("RoleID");
+            if (userId == null)
+                return RedirectToAction("Login", "Account");
+            if (roleId != 4)
+                return Forbid();
+
+            // Lookup my username for safety
+            var myUserName = await _context.User
+                .Where(u => u.UserID == userId.Value)
+                .Select(u => u.UserName)
+                .FirstOrDefaultAsync();
+
+            // Only delete if it's actually one of my bookings
+            var wk = await _context.Workout
+                .FirstOrDefaultAsync(w => w.WorkoutID == workoutId
+                                       && w.TrainerName == myUserName);
+            if (wk != null)
+            {
+                _context.Workout.Remove(wk);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction(nameof(Dashboard));
         }
     }
 }
