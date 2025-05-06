@@ -12,6 +12,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - GymManager</title>
+    <link rel="icon" type="image/png" href="~/Images/image0.png" />
     <!-- Include Bootstrap and our theme CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -34,12 +35,6 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
 
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
                         @if (HttpContextAccessor.HttpContext.Session.GetInt32("RoleID") == 2)
                         {
                             <li class="nav-item">
@@ -78,7 +73,7 @@
     <!-- Footer sticks to bottom -->
     <footer class="border-top mt-auto">
         <div class="container">
-            &copy; 2025 - GymManager - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2025 - GymManager
         </div>
     </footer>
 
