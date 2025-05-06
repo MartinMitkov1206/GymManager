@@ -49,7 +49,7 @@ namespace GymManager.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("Goal", (string)null);
+                    b.ToTable("Goal");
                 });
 
             modelBuilder.Entity("GymManager.Models.Role", b =>
@@ -66,7 +66,7 @@ namespace GymManager.Migrations
 
                     b.HasKey("RoleID");
 
-                    b.ToTable("Role", (string)null);
+                    b.ToTable("Role");
                 });
 
             modelBuilder.Entity("GymManager.Models.Stats", b =>
@@ -102,7 +102,7 @@ namespace GymManager.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("Stats", (string)null);
+                    b.ToTable("Stats");
                 });
 
             modelBuilder.Entity("GymManager.Models.TrainerClient", b =>
@@ -125,7 +125,7 @@ namespace GymManager.Migrations
 
                     b.HasIndex("TrainerID");
 
-                    b.ToTable("TrainerClients", (string)null);
+                    b.ToTable("TrainerClients");
                 });
 
             modelBuilder.Entity("GymManager.Models.User", b =>
@@ -172,113 +172,7 @@ namespace GymManager.Migrations
 
                     b.HasIndex("RoleID");
 
-                    b.ToTable("User", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserID = 101,
-                            Age = 30,
-                            CreatedAt = new DateTime(2025, 2, 25, 18, 45, 52, 513, DateTimeKind.Utc).AddTicks(9180),
-                            Email = "qsentrainer@gmail.com",
-                            IsEmailConfirmed = false,
-                            PasswordHash = "1245",
-                            PasswordSalt = "1245",
-                            RoleID = 1,
-                            UpdatedAt = new DateTime(2025, 2, 25, 18, 45, 52, 513, DateTimeKind.Utc).AddTicks(9181),
-                            UserName = "QsenTrainer"
-                        },
-                        new
-                        {
-                            UserID = 102,
-                            Age = 30,
-                            CreatedAt = new DateTime(2025, 2, 25, 18, 45, 52, 513, DateTimeKind.Utc).AddTicks(9183),
-                            Email = "kamentrainer@gmail.com",
-                            IsEmailConfirmed = false,
-                            PasswordHash = "1245",
-                            PasswordSalt = "1245",
-                            RoleID = 1,
-                            UpdatedAt = new DateTime(2025, 2, 25, 18, 45, 52, 513, DateTimeKind.Utc).AddTicks(9184),
-                            UserName = "KamenTrainer"
-                        },
-                        new
-                        {
-                            UserID = 103,
-                            Age = 30,
-                            CreatedAt = new DateTime(2025, 2, 25, 18, 45, 52, 513, DateTimeKind.Utc).AddTicks(9185),
-                            Email = "martintrainer@gmail.com",
-                            IsEmailConfirmed = false,
-                            PasswordHash = "1245",
-                            PasswordSalt = "1245",
-                            RoleID = 1,
-                            UpdatedAt = new DateTime(2025, 2, 25, 18, 45, 52, 513, DateTimeKind.Utc).AddTicks(9186),
-                            UserName = "MartinTrainer"
-                        },
-                        new
-                        {
-                            UserID = 104,
-                            Age = 30,
-                            CreatedAt = new DateTime(2025, 2, 25, 18, 45, 52, 513, DateTimeKind.Utc).AddTicks(9187),
-                            Email = "erentrainer@gmail.com",
-                            IsEmailConfirmed = false,
-                            PasswordHash = "1245",
-                            PasswordSalt = "1245",
-                            RoleID = 1,
-                            UpdatedAt = new DateTime(2025, 2, 25, 18, 45, 52, 513, DateTimeKind.Utc).AddTicks(9188),
-                            UserName = "ErenTrainer"
-                        },
-                        new
-                        {
-                            UserID = 105,
-                            Age = 30,
-                            CreatedAt = new DateTime(2025, 2, 25, 18, 45, 52, 513, DateTimeKind.Utc).AddTicks(9190),
-                            Email = "paveltrainer@gmail.com",
-                            IsEmailConfirmed = false,
-                            PasswordHash = "1245",
-                            PasswordSalt = "1245",
-                            RoleID = 1,
-                            UpdatedAt = new DateTime(2025, 2, 25, 18, 45, 52, 513, DateTimeKind.Utc).AddTicks(9190),
-                            UserName = "PavelTrainer"
-                        },
-                        new
-                        {
-                            UserID = 106,
-                            Age = 30,
-                            CreatedAt = new DateTime(2025, 2, 25, 18, 45, 52, 513, DateTimeKind.Utc).AddTicks(9192),
-                            Email = "mishotrainer@gmail.com",
-                            IsEmailConfirmed = false,
-                            PasswordHash = "1245",
-                            PasswordSalt = "1245",
-                            RoleID = 1,
-                            UpdatedAt = new DateTime(2025, 2, 25, 18, 45, 52, 513, DateTimeKind.Utc).AddTicks(9192),
-                            UserName = "MishoTrainer"
-                        },
-                        new
-                        {
-                            UserID = 107,
-                            Age = 30,
-                            CreatedAt = new DateTime(2025, 2, 25, 18, 45, 52, 513, DateTimeKind.Utc).AddTicks(9194),
-                            Email = "mirotrainer@gmail.com",
-                            IsEmailConfirmed = false,
-                            PasswordHash = "1245",
-                            PasswordSalt = "1245",
-                            RoleID = 1,
-                            UpdatedAt = new DateTime(2025, 2, 25, 18, 45, 52, 513, DateTimeKind.Utc).AddTicks(9194),
-                            UserName = "MiroTrainer"
-                        },
-                        new
-                        {
-                            UserID = 108,
-                            Age = 30,
-                            CreatedAt = new DateTime(2025, 2, 25, 18, 45, 52, 513, DateTimeKind.Utc).AddTicks(9195),
-                            Email = "julytrainer@gmail.com",
-                            IsEmailConfirmed = false,
-                            PasswordHash = "1245",
-                            PasswordSalt = "1245",
-                            RoleID = 1,
-                            UpdatedAt = new DateTime(2025, 2, 25, 18, 45, 52, 513, DateTimeKind.Utc).AddTicks(9196),
-                            UserName = "JulyTrainer"
-                        });
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("GymManager.Models.Workout", b =>
@@ -295,6 +189,9 @@ namespace GymManager.Migrations
                     b.Property<bool>("IsIndividual")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime>("ScheduledAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("TrainerName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -309,7 +206,7 @@ namespace GymManager.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("Workout", (string)null);
+                    b.ToTable("Workout");
                 });
 
             modelBuilder.Entity("GymManager.Models.WorkoutStats", b =>
@@ -327,7 +224,7 @@ namespace GymManager.Migrations
 
                     b.HasIndex("WorkoutID");
 
-                    b.ToTable("WorkoutStats", (string)null);
+                    b.ToTable("WorkoutStats");
                 });
 
             modelBuilder.Entity("GymManager.Models.WorkoutType", b =>
@@ -344,7 +241,7 @@ namespace GymManager.Migrations
 
                     b.HasKey("WorkoutTypeID");
 
-                    b.ToTable("WorkoutType", (string)null);
+                    b.ToTable("WorkoutType");
                 });
 
             modelBuilder.Entity("GymManager.Models.Goal", b =>

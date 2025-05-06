@@ -2,125 +2,133 @@
 
 @{
     ViewData["Title"] = "Schedule Workout";
-    // Today in yyyy-MM-dd format for the date input
-    var today = DateTime.Now.ToString("yyyy-MM-dd");
 }
 
 <div class="container mt-5">
-
-    @* 1) Error banner *@
     @if (TempData["ErrorMessage"] != null)
     {
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="alert alert-danger text-center">
             @TempData["ErrorMessage"]
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     }
 
     <h2 class="text-center mb-4">Schedule Workout with Trainer @Model</h2>
 
-    <div class="text-center mb-4">
-        <label class="form-label">Choose Training Type</label>
-        <div>
-            <input type="radio" id="individual" name="trainingType" value="Individual" checked />
-            <label for="individual" class="me-3">Individual</label>
-
-            <input type="radio" id="group" name="trainingType" value="Group" />
-            <label for="group">Group</label>
-        </div>
-    </div>
-
-    <div class="text-center mb-4">
-        <label for="datePicker" class="form-label">Select a Date</label>
-        <!-- 2) min="today" prevents past dates -->
-        <input type="date"
-               id="datePicker"
-               class="form-control d-inline-block w-auto"
-               min="@today"
-               required />
-    </div>
-
-    <div class="text-center">
-        <h4>Select a Time</h4>
-        <div class="d-flex flex-wrap justify-content-center" id="timeSlots">
-            <!-- JS will populate -->
-        </div>
-    </div>
-
-    <form method="post"
-          asp-action="Schedule"
-          asp-controller="Workouts"
-          class="text-center mt-4">
+    <form method="post" asp-action="Schedule" asp-controller="Workouts" class="text-center mt-4">
         <input type="hidden" name="trainerId" value="@Model" />
+
+        <!-- Duration Input -->
+        <div class="mb-3">
+            <label for="duration" class="form-label">Duration (minutes)</label>
+            <input type="number" id="duration" name="duration" class="form-control d-inline-block w-auto" min="1" step="1" value="60" required />
+        </div>
+
+        <!-- Workout Type Select -->
+        <div class="mb-3">
+            <label for="workoutTypeId" class="form-label">Workout Type</label>
+            <select id="workoutTypeId" name="workoutTypeId" class="form-select d-inline-block w-auto" required>
+                <option value="">— select —</option>
+                <option value="1">Type 1</option>
+                <option value="2">Type 2</option>
+                <option value="3">Type 3</option>
+            </select>
+        </div>
+
+        <!-- Training Type Radios -->
+        <div class="text-center mb-4">
+            <label class="form-label">Choose Training Type</label>
+            <div>
+                <input type="radio" id="individual" name="trainingType" value="Individual" checked />
+                <label for="individual" class="me-3">Individual</label>
+                <input type="radio" id="group" name="trainingType" value="Group" />
+                <label for="group">Group</label>
+            </div>
+        </div>
+
+        <!-- Date Picker -->
+        <div class="text-center mb-4">
+            <label for="datePicker" class="form-label">Select a Date</label>
+            <input type="date" id="datePicker" class="form-control d-inline-block w-auto" required />
+        </div>
+
+        <!-- Time Slots -->
+        <div class="text-center">
+            <h4>Select a Time</h4>
+            <div class="d-flex flex-wrap justify-content-center" id="timeSlots"></div>
+        </div>
+
+        <!-- Hidden fields for date/time -->
         <input type="hidden" name="selectedDate" id="selectedDate" />
         <input type="hidden" name="selectedTime" id="selectedTime" />
-        <button type="submit" class="btn btn-primary">Confirm</button>
+
+        <button type="submit" class="btn btn-primary mt-4">Confirm</button>
     </form>
 </div>
 
 @section Scripts {
-<script>
-    const datePicker       = document.getElementById('datePicker');
-    const timeSlots        = document.getElementById('timeSlots');
-    const selDateInput     = document.getElementById('selectedDate');
-    const selTimeInput     = document.getElementById('selectedTime');
-    const now              = new Date();
+    <script>
+        const timeSlotsContainer = document.getElementById('timeSlots');
+        const selectedTimeInput  = document.getElementById('selectedTime');
+        const selectedDateInput  = document.getElementById('selectedDate');
+        const datePicker         = document.getElementById('datePicker');
 
-    // Whenever the date changes
-    datePicker.addEventListener('change', e => {
-        selDateInput.value = e.target.value;
-        regenerateSlots();
-    });
+        // 1) Prevent past dates
+        const today = new Date().toISOString().split('T')[0];
+        datePicker.min = today;
+        datePicker.value = today;
+        selectedDateInput.value = today;
 
-    // Whenever training type changes
-    document.querySelectorAll('input[name="trainingType"]').forEach(radio =>
-        radio.addEventListener('change', regenerateSlots)
-    );
+        datePicker.addEventListener('change', e => {
+            selectedDateInput.value = e.target.value;
+            // regenerate slots to apply past-time disabling
+            const selectedRadio = document.querySelector('input[name="trainingType"]:checked').value;
+            generateTimeSlots(selectedRadio);
+        });
 
-    // On page load: set today and build initial slots
-    datePicker.value = "@today";
-    selDateInput.value = datePicker.value;
-    regenerateSlots();
+        // 2) Generate time slots, disabling past hours if today
+        function generateTimeSlots(type) {
+            timeSlotsContainer.innerHTML = '';
+            const now = new Date();
+            const isToday = (datePicker.value === today);
 
-    function regenerateSlots() {
-        timeSlots.innerHTML = '';
-        const type    = document.querySelector('input[name="trainingType"]:checked').value;
-        const chosen  = new Date(datePicker.value + 'T00:00:00');
-        const isToday = chosen.toDateString() === now.toDateString();
+            const start = 10, end = 20;
+            const step = type === 'Group' ? 60 : 15;
 
-        // how we step minutes
-        const step = (type === 'Group') ? 60 : 15;
-        for (let h = 10; h <= 20; h++) {
-            for (let m = (type === 'Group' ? 0 : 0); m < 60; m += step) {
-                if (type === 'Group' && m !== 0) continue;
-                const hh = String(h).padStart(2,'0'),
-                      mm = String(m).padStart(2,'0'),
-                      t  = `${hh}:${mm}`;
+            for (let h = start; h <= end; h++) {
+                for (let m = (type==='Group'?0:0); m < 60; m += step) {
+                    if (type === 'Group' && m>0) break;
+                    const hh = String(h).padStart(2,'0'), mm = String(m).padStart(2,'0');
+                    const timeStr = `${hh}:${mm}`;
+                    const slotDateTime = new Date(`${datePicker.value}T${timeStr}:00`);
 
-                const btn = document.createElement('button');
-                btn.type      = 'button';
-                btn.className = 'btn btn-outline-secondary m-1 time-btn';
-                btn.textContent = t;
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'btn btn-outline-secondary m-1 time-btn';
+                    btn.textContent = timeStr;
 
-                // if it's today and this time is already past -> disable
-                if (isToday) {
-                    const slotTime = new Date(chosen);
-                    slotTime.setHours(h, m, 0, 0);
-                    if (slotTime < now) {
+                    // disable past times if selecting today
+                    if (isToday && slotDateTime < now) {
                         btn.disabled = true;
+                        btn.classList.add('disabled');
+                    } else {
+                        btn.onclick = () => {
+                            document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('btn-success'));
+                            btn.classList.add('btn-success');
+                            selectedTimeInput.value = timeStr;
+                        };
                     }
+
+                    timeSlotsContainer.appendChild(btn);
                 }
-
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('btn-success'));
-                    btn.classList.add('btn-success');
-                    selTimeInput.value = t;
-                });
-
-                timeSlots.appendChild(btn);
             }
         }
-    }
-</script>
+
+        // 3) Re-generate when training type changes
+        document.querySelectorAll('input[name="trainingType"]').forEach(r => {
+            r.addEventListener('change', () => generateTimeSlots(r.value));
+        });
+
+        // 4) Initial slot generation
+        generateTimeSlots('Individual');
+    </script>
 }
-</script>

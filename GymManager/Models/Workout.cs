@@ -12,9 +12,11 @@ namespace GymManager.Models
         public int WorkoutTypeID { get; set; }
         public bool IsIndividual { get; set; }
         public int UserID { get; set; }
+        public DateTime ScheduledAt { get; set; }
 
         [ForeignKey("UserID")]
         public User User { get; set; }
+
 
     }
 }

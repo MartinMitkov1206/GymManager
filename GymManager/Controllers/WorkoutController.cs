@@ -1,11 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using System;
+using GymManager.Models;
+using GymManager.Data;
 
 namespace GymManager.Controllers
 {
     public class WorkoutsController : Controller
     {
+        private readonly GymManagerContext _context;
+
+
+        public WorkoutsController(GymManagerContext context)
+        {
+            _context = context;
+        }
+
         [HttpGet]
         public IActionResult Schedule()
         {
@@ -28,10 +38,11 @@ namespace GymManager.Controllers
             return View(model: trainerId.Value);
         }
 
+
         [HttpPost]
-        public IActionResult Schedule(int trainerId, string selectedDate, string selectedTime, string trainingType)
+        public IActionResult Schedule(int trainerId, string selectedDate, string selectedTime, string trainingType, int duration, int workoutTypeId)
         {
-            // ensure logged in
+            // ensure is logged in
             if (HttpContext.Session.GetInt32("UserID") == null)
                 return RedirectToAction("Login", "Account");
 
@@ -42,21 +53,40 @@ namespace GymManager.Controllers
                 return RedirectToAction("Schedule", new { trainerId });
             }
 
-            // parse into a DateTime
-            if (!DateTime.TryParse($"{selectedDate} {selectedTime}", out var booking))
+            // parse into a datetime
+            if (!DateTime.TryParse($"{selectedDate} {selectedTime}", out var bookingDate))
             {
                 TempData["ErrorMessage"] = "Could not understand that date/time.";
                 return RedirectToAction("Schedule", new { trainerId });
             }
 
             // no past bookings
-            if (booking < DateTime.Now)
+            if (bookingDate < DateTime.Now)
             {
-                TempData["ErrorMessage"] = "You can’t schedule a session in the past.";
+                TempData["ErrorMessage"] = "You can't schedule a session in the past.";
                 return RedirectToAction("Schedule", new { trainerId });
             }
 
-            // TODO: save your booking to the database here...
+            var trainer = _context.User.FirstOrDefault(u => u.UserID == trainerId);
+            if (trainer == null)
+            {
+                TempData["ErrorMessage"] = "Trainer not found.";
+                return RedirectToAction("Schedule", new { trainerId });
+            }
+
+
+            var booking = new Workout
+            {
+                UserID = (int)HttpContext.Session.GetInt32("UserID"),
+                TrainerName = trainer.UserName,
+                Duration = duration,
+                WorkoutTypeID = workoutTypeId,
+                IsIndividual = trainingType == "Individual",
+                ScheduledAt = bookingDate
+            };
+
+            _context.Workout.Add(booking);
+            _context.SaveChanges();
 
             return RedirectToAction("Index", "Home");
         }
