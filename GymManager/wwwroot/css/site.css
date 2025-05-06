@@ -8,6 +8,17 @@
     --form-bg: #282828; /* Background for forms and containers */
     --error-color: #fc6060;
 }
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    /* point to your file in wwwroot/images */
+    background: url("../Images/ChatGPT Image May 6, 2025, 08_28_41 PM.png") no-repeat center center fixed;
+    background-size: cover;
+}
+
 
 /* Global Resets & Body */
 * {
@@ -136,3 +147,11 @@ footer {
     margin-top: 2rem;
 }
 /* force all dark tables to use white text */
+.trainer-card img {
+    width: 100%s; /* or whatever fixed size you like */
+    height: 350px; /* same as width for a square crop */
+    object-fit: cover; /* scales & crops to fill the box */
+    display: block;
+    margin: 0 auto; /* center horizontally inside its container */
+}
+

@@ -15,42 +15,39 @@ namespace GymManager.Controllers
 			_context = context;
 		}
 
-		// GET: /WorkoutStats/Index
-		// Optional parameter workoutId lets the user pick a specific workout.
-		[HttpGet]
-		public IActionResult Index(int? workoutId)
-		{
-			// Check if the user is logged in
-			int? userId = HttpContext.Session.GetInt32("UserID");
-			if (userId == null)
-			{
-				return RedirectToAction("Login", "Account");
-			}
+        // GET: /WorkoutStats/Index
+        // Optional parameter workoutId lets the user pick a specific workout.
+        [HttpGet]
+        public IActionResult Index(int? workoutId)
+        {
+            var userId = HttpContext.Session.GetInt32("UserID");
+            if (userId == null)
+                return RedirectToAction("Login", "Account");
 
-			// Retrieve overall stats for the current user
-			var overallStats = _context.Stats.FirstOrDefault(s => s.UserID == userId.Value);
+            // get the user’s stored Stats (weight, bench, etc)
+            var overallStats = _context.Stats
+                               .FirstOrDefault(s => s.UserID == userId.Value)
+                           ?? new Stats { UserID = userId.Value };
 
-			// Retrieve all workouts for the current user
-			List<Workout> workouts = _context.Workout.Where(w => w.UserID == userId.Value).ToList();
+            // grab every workout they’ve ever done
+            var workouts = _context.Workout
+                            .Where(w => w.UserID == userId.Value)
+                            .ToList();
 
-			// Retrieve the workout statistics for the selected workout (if any)
-			WorkoutStats selectedWorkoutStats = null;
-			if (workoutId.HasValue)
-			{
-				selectedWorkoutStats = _context.WorkoutStats.FirstOrDefault(ws => ws.WorkoutID == workoutId.Value);
-			}
+            // override the Stats.Workouts field so it always reflects the true count
+            overallStats.Workouts = workouts.Count;
 
-			// Retrieve the user record so we can pass the Age to the view.
-			var user = _context.User.FirstOrDefault(u => u.UserID == userId.Value);
-			ViewBag.UserAge = user?.Age;
+            // now stick everything in the ViewBag
+            ViewBag.OverallStats = overallStats;
+            ViewBag.Workouts = workouts;
+            ViewBag.SelectedWorkoutStats = workoutId.HasValue
+                  ? _context.WorkoutStats.FirstOrDefault(ws => ws.WorkoutID == workoutId.Value)
+                  : null;
+            ViewBag.SelectedWorkoutID = workoutId;
 
-			// Pass the data to the view via ViewBag
-			ViewBag.OverallStats = overallStats;
-			ViewBag.Workouts = workouts;
-			ViewBag.SelectedWorkoutStats = selectedWorkoutStats;
-			ViewBag.SelectedWorkoutID = workoutId;
+            return View();
+        }
 
-			return View();
-		}
-	}
+    }
 }
+

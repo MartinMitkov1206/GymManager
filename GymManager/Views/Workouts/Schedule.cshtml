@@ -11,8 +11,7 @@
             @TempData["ErrorMessage"]
         </div>
     }
-
-    <h2 class="text-center mb-4">Schedule Workout with Trainer @Model</h2>
+    <h2 class="text-center mb-4">Schedule Workout with Trainer @ViewBag.TrainerName</h2>
 
     <form method="post" asp-action="Schedule" asp-controller="Workouts" class="text-center mt-4">
         <input type="hidden" name="trainerId" value="@Model" />
@@ -28,9 +27,9 @@
             <label for="workoutTypeId" class="form-label">Workout Type</label>
             <select id="workoutTypeId" name="workoutTypeId" class="form-select d-inline-block w-auto" required>
                 <option value="">— select —</option>
-                <option value="1">Type 1</option>
-                <option value="2">Type 2</option>
-                <option value="3">Type 3</option>
+                <option value="1">Push</option>
+                <option value="2">Pull</option>
+                <option value="3">Legs</option>
             </select>
         </div>
 

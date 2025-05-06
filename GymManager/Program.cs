@@ -49,14 +49,14 @@ using (var scope = app.Services.CreateScope())
 
         var trainers = new[]
         {
-            new User { UserName = "QsenTrainer", Email = "qsentrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
-            new User { UserName = "KamenTrainer", Email = "kamentrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
-            new User { UserName = "MartinTrainer", Email = "martintrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
-            new User { UserName = "ErenTrainer", Email = "erentrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
-            new User { UserName = "PavelTrainer", Email = "paveltrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
-            new User { UserName = "MishoTrainer", Email = "mishotrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
-            new User { UserName = "MiroTrainer", Email = "mirotrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
-            new User { UserName = "JulyTrainer", Email = "julytrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new User { UserName = "Qsen Gigov", Email = "qsentrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new User { UserName = "Kamen Ivanov", Email = "kamentrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new User { UserName = "Martin Mitkov", Email = "martintrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new User { UserName = "Eren Steliyanov", Email = "erentrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new User { UserName = "Pavel Malinovski", Email = "paveltrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new User { UserName = "Mihail Bobkov", Email = "mishotrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new User { UserName = "Miroslav Nedqlkov", Email = "mirotrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new User { UserName = "July Shtirkof", Email = "julytrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
         };
 
         ctx.User.AddRange(trainers);

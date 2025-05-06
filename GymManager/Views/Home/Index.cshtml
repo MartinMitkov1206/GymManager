@@ -2,206 +2,211 @@
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 @{
 
-    ViewData["Title"] = "Welcome to GymManager";
-    var userId = HttpContextAccessor.HttpContext.Session.GetInt32("UserID");
-    var roleId = HttpContextAccessor.HttpContext.Session.GetInt32("RoleID");
-    }
+	ViewData["Title"] = "Welcome to GymManager";
+	var userId = HttpContextAccessor.HttpContext.Session.GetInt32("UserID");
+	var roleId = HttpContextAccessor.HttpContext.Session.GetInt32("RoleID");
+}
 
-    
+@if (TempData["ErrorMessage"] != null)
+{
+	<div class="alert alert-warning text-center">
+		@TempData["ErrorMessage"]
+	</div>
+}
 
-    <div class="jumbotron text-center p-5 rounded">
-        <h1 class="display-4">Welcome to GymManager</h1>
-        <p class="lead">Your ultimate fitness companion! Track workouts, set goals, and stay motivated.</p>
+<div class="jumbotron text-center p-5 rounded">
+	<h1 class="display-4">Welcome to GymManager</h1>
+	<p class="lead">Your ultimate fitness companion! Track workouts, set goals, and stay motivated.</p>
 
-        @if (Context.Session.GetInt32("UserID") == null)
-        {
-            <a class="btn btn-light btn-lg me-2" asp-controller="Account" asp-action="Register">Get Started</a>
-            <a class="btn btn-outline-light btn-lg" asp-controller="Account" asp-action="Login">Login</a>
-        }
-    </div>
-<div class="row text-center mt-5">
-    @if (userId != null && roleId == 4)
-    {
-        <!-- Trainer sees TWO cards that link to the two tabs on their dashboard -->
-        <div class="col-md-6 mb-4">
-            <a href="@Url.Action("Dashboard","Trainers")#tabWorkouts" class="text-decoration-none text-reset">
-                <div class="card shadow-sm p-4">
-                    <i class="bi bi-calendar2-check display-4 text-primary"></i>
-                    <h3 class="mt-3">My Bookings</h3>
-                    <p>View all your upcoming client sessions.</p>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-6 mb-4">
-            <a href="@Url.Action("Dashboard","Trainers")#tabProgress" class="text-decoration-none text-reset">
-                <div class="card shadow-sm p-4">
-                    <i class="bi bi-people-fill display-4 text-success"></i>
-                    <h3 class="mt-3">Client Progress</h3>
-                    <p>Edit your clients’ stats & track progress.</p>
-                </div>
-            </a>
-        </div>
-    }
-    else
-    {
-        <!-- Everyone else sees the original three feature cards -->
-        <div class="col-md-4 mb-4">
-            <a asp-controller="Workouts" asp-action="Schedule" class="text-decoration-none text-reset">
-                <div class="card shadow-sm p-4">
-                    <i class="bi bi-calendar2-check display-4 text-primary"></i>
-                    <h3 class="mt-3">Schedule Workouts</h3>
-                    <p>Plan your gym sessions and track progress effortlessly.</p>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-4 mb-4">
-            <a asp-controller="WorkoutStats" asp-action="Index" class="text-decoration-none text-reset">
-                <div class="card shadow-sm p-4">
-                    <i class="bi bi-bar-chart-fill display-4 text-success"></i>
-                    <h3 class="mt-3">Track Progress</h3>
-                    <p>Monitor your fitness journey with real-time stats.</p>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-4 mb-4">
-            <a asp-controller="Progress" asp-action="Index" class="text-decoration-none text-reset">
-                <div class="card shadow-sm p-4">
-                    <i class="bi bi-trophy-fill display-4 text-warning"></i>
-                    <h3 class="mt-3">Achieve Goals</h3>
-                    <p>Set fitness goals and stay motivated every day.</p>
-                </div>
-            </a>
-        </div>
-    }
+	@if (Context.Session.GetInt32("UserID") == null)
+	{
+		<a class="btn btn-light btn-lg me-2" asp-controller="Account" asp-action="Register">Get Started</a>
+		<a class="btn btn-outline-light btn-lg" asp-controller="Account" asp-action="Login">Login</a>
+	}
 </div>
-     
+<div class="row text-center mt-5">
+	@if (userId != null && roleId == 4)
+	{
+		<!-- Trainer sees TWO cards that link to the two tabs on their dashboard -->
+		<div class="col-md-6 mb-4">
+			<a href="@Url.Action("Dashboard","Trainers")#tabWorkouts" class="text-decoration-none text-reset">
+				<div class="card shadow-sm p-4">
+					<i class="bi bi-calendar2-check display-4 text-primary"></i>
+					<h3 class="mt-3">My Bookings</h3>
+					<p>View all your upcoming client sessions.</p>
+				</div>
+			</a>
+		</div>
+		<div class="col-md-6 mb-4">
+			<a href="@Url.Action("Dashboard","Trainers")#tabProgress" class="text-decoration-none text-reset">
+				<div class="card shadow-sm p-4">
+					<i class="bi bi-people-fill display-4 text-success"></i>
+					<h3 class="mt-3">Client Progress</h3>
+					<p>Edit your clients’ stats & track progress.</p>
+				</div>
+			</a>
+		</div>
+	}
+	else
+	{
+		<!-- Everyone else sees the original three feature cards -->
+		<div class="col-md-4 mb-4">
+			<a asp-controller="Workouts" asp-action="Schedule" class="text-decoration-none text-reset">
+				<div class="card shadow-sm p-4">
+					<i class="bi bi-calendar2-check display-4 text-primary"></i>
+					<h3 class="mt-3">Schedule Workouts</h3>
+					<p>Plan your gym sessions.</p>
+				</div>
+			</a>
+		</div>
+		<div class="col-md-4 mb-4">
+			<a asp-controller="WorkoutStats" asp-action="Index" class="text-decoration-none text-reset">
+				<div class="card shadow-sm p-4">
+					<i class="bi bi-bar-chart-fill display-4 text-success"></i>
+					<h3 class="mt-3">Track Progress</h3>
+					<p>Monitor your fitness journey with real-time stats.</p>
+				</div>
+			</a>
+		</div>
+		<div class="col-md-4 mb-4">
+			<a asp-controller="Progress" asp-action="Index" class="text-decoration-none text-reset">
+				<div class="card shadow-sm p-4">
+					<i class="bi bi-trophy-fill display-4 text-warning"></i>
+					<h3 class="mt-3">Achieve Goals</h3>
+					<p>Set fitness goals and stay motivated every day.</p>
+				</div>
+			</a>
+		</div>
+	}
+</div>
 
-    <!-- Trainers Section -->
-    @if (userId != null && roleId == 3)
-    {
-    <div class="container mt-5">
-        <h2 class="text-center mb-4">Meet Our Trainers</h2>
-        <div class="row">
-            <!-- Trainer 1 -->
-            <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card trainer-card" data-trainer-id="110">
-                    <img src="../Images/QsenTrainer.jpg" class="card-img-top img-fluid" alt="Trainer Qsen">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Qsen Gigov</h5>
-                    </div>
-                </div>
-            </div>
-            <!-- Trainer 2 -->
-            <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card trainer-card" data-trainer-id="111">
-                    <img src="../Images/KamenTrainer.jpg" class="card-img-top img-fluid" alt="Trainer Kamen">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Kamen Ivanov</h5>
-                    </div>
-                </div>
-            </div>
-            <!-- Trainer 3 -->
-            <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card trainer-card" data-trainer-id="112">
-                    <img src="../Images/MartiTrainer.jpeg" class="card-img-top img-fluid" alt="Trainer Martin">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Martin Mitkov</h5>
-                    </div>
-                </div>
-            </div>
-            <!-- Trainer 4 -->
-            <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card trainer-card" data-trainer-id="113">
-                    <img src="~/images/ErkoTrainer.jpg" class="card-img-top img-fluid" alt="Trainer Erko">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Eren Steliyanov</h5>
-                    </div>
-                </div>
-            </div>
-            <!-- Trainer 5 -->
-            <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card trainer-card" data-trainer-id="114">
-                    <img src="../Images/PavkoTrainer.jpg" class="card-img-top img-fluid" alt="Trainer Pavko">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Pavel Malinovski</h5>
-                    </div>
-                </div>
-            </div>
-            <!-- Trainer 6 -->
-            <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card trainer-card" data-trainer-id="115">
-                    <img src="../Images/MishoTrainer.jpg" class="card-img-top img-fluid" alt="Trainer Muhi">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Mihail Bobevski</h5>
-                    </div>
-                </div>
-            </div>
-            <!-- Trainer 7 -->
-            <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card trainer-card" data-trainer-id="116">
-                    <img src="../Images/MiroTrainer.jpg" class="card-img-top img-fluid" alt="Trainer Miro">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Miroslav Nedyalkov</h5>
-                    </div>
-                </div>
-            </div>
-            <!-- Trainer 8 -->
-            <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card trainer-card" data-trainer-id="117">
-                    <img src="../Images/JulyTrainer.jpg" class="card-img-top img-fluid" alt="Trainer July">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Julian Shtirkov</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    }
 
-    <!-- Testimonials -->
-    <div class="mt-5 text-center">
-        <h2>What Our Members Say</h2>
-        <div id="testimonialCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <p class="lead">"GymManager helped me stay consistent. Love it!"</p>
-                    <strong>- John Doe</strong>
-                </div>
-                <div class="carousel-item">
-                    <p class="lead">"Best gym tracking app! I never miss a session now."</p>
-                    <strong>- Sarah Lee</strong>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            </a>
-            <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            </a>
-        </div>
-    </div>
+<!-- Trainers Section -->
+@if (userId != null && roleId == 3)
+{
+	<div class="container mt-5">
+		<h2 class="text-center mb-4">Meet Our Trainers</h2>
+		<div class="row">
+			<!-- Trainer 1 -->
+			<div class="col-md-3 col-sm-6 mb-4">
+				<div class="card trainer-card" data-trainer-id="118">
+					<img src="../Images/QsenTrainer.jpg" class="card-img-top img-fluid" alt="Trainer Qsen">
+					<div class="card-body text-center">
+						<h5 class="card-title">Qsen Gigov</h5>
+					</div>
+				</div>
+			</div>
+			<!-- Trainer 2 -->
+			<div class="col-md-3 col-sm-6 mb-4">
+				<div class="card trainer-card" data-trainer-id="119">
+					<img src="../Images/KamenTrainer.jpg" class="card-img-top img-fluid" alt="Trainer Kamen">
+					<div class="card-body text-center">
+						<h5 class="card-title">Kamen Ivanov</h5>
+					</div>
+				</div>
+			</div>
+			<!-- Trainer 3 -->
+			<div class="col-md-3 col-sm-6 mb-4">
+				<div class="card trainer-card" data-trainer-id="120">
+					<img src="../Images/MartiTrainer.jpeg" class="card-img-top img-fluid" alt="Trainer Martin">
+					<div class="card-body text-center">
+						<h5 class="card-title">Martin Mitkov</h5>
+					</div>
+				</div>
+			</div>
+			<!-- Trainer 4 -->
+			<div class="col-md-3 col-sm-6 mb-4">
+				<div class="card trainer-card" data-trainer-id="121">
+					<img src="~/images/ErkoTrainer.jpg" class="card-img-top img-fluid" alt="Trainer Erko">
+					<div class="card-body text-center">
+						<h5 class="card-title">Eren Steliyanov</h5>
+					</div>
+				</div>
+			</div>
+			<!-- Trainer 5 -->
+			<div class="col-md-3 col-sm-6 mb-4">
+				<div class="card trainer-card" data-trainer-id="122">
+					<img src="../Images/PavkoTrainer.jpg" class="card-img-top img-fluid" alt="Trainer Pavko">
+					<div class="card-body text-center">
+						<h5 class="card-title">Pavel Malinovski</h5>
+					</div>
+				</div>
+			</div>
+			<!-- Trainer 6 -->
+			<div class="col-md-3 col-sm-6 mb-4">
+				<div class="card trainer-card" data-trainer-id="123">
+					<img src="../Images/MishoTrainer.jpg" class="card-img-top img-fluid" alt="Trainer Muhi">
+					<div class="card-body text-center">
+						<h5 class="card-title">Mihail Bobevski</h5>
+					</div>
+				</div>
+			</div>
+			<!-- Trainer 7 -->
+			<div class="col-md-3 col-sm-6 mb-4">
+				<div class="card trainer-card" data-trainer-id="124">
+					<img src="../Images/MiroTrainer.jpg" class="card-img-top img-fluid" alt="Trainer Miro">
+					<div class="card-body text-center">
+						<h5 class="card-title">Miroslav Nedyalkov</h5>
+					</div>
+				</div>
+			</div>
+			<!-- Trainer 8 -->
+			<div class="col-md-3 col-sm-6 mb-4">
+				<div class="card trainer-card" data-trainer-id="125">
+					<img src="../Images/JulyTrainer.jpg" class="card-img-top img-fluid" alt="Trainer July">
+					<div class="card-body text-center">
+						<h5 class="card-title">Julian Shtirkov</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+}
+
+<!-- Testimonials -->
+<div class="mt-5 text-center">
+	<h2>What Our Members Say</h2>
+	<div id="testimonialCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<p class="lead">"GymManager helped me stay consistent. Love it!"</p>
+				<strong>- John Doe</strong>
+			</div>
+			<div class="carousel-item">
+				<p class="lead">"Best gym tracking app! I never miss a session now."</p>
+				<strong>- Sarah Lee</strong>
+			</div>
+		</div>
+		<a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		</a>
+		<a class="carousel-control-next" href="#testimonialCarousel" role="button" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		</a>
+	</div>
+</div>
 </div>
 
 @section Scripts {
-    <script>
-        document.querySelectorAll('#trainerTabs a').forEach(el => new bootstrap.Tab(el));
-        $(document).ready(function () {
-            $(".trainer-card").on("click", function () {
-                var trainerId = $(this).data("trainer-id");
+	<script>
+		document.querySelectorAll('#trainerTabs a').forEach(el => new bootstrap.Tab(el));
+		$(document).ready(function () {
+			$(".trainer-card").on("click", function () {
+				var trainerId = $(this).data("trainer-id");
 
-                // Remove previous selection
-                $(".trainer-card").removeClass("border border-primary");
-                $(".trainer-card .selected-message").remove();
+				// Remove previous selection
+				$(".trainer-card").removeClass("border border-primary");
+				$(".trainer-card .selected-message").remove();
 
-                // Highlight the clicked trainer
-                $(this).addClass("border border-primary");
-                $(this).find(".card-body").append('<div class="selected-message text-success mt-2">Selected</div>');
+				// Highlight the clicked trainer
+				$(this).addClass("border border-primary");
+				$(this).find(".card-body").append('<div class="selected-message text-success mt-2">Selected</div>');
 
-                // After short delay, redirect to store trainer in session
-                setTimeout(function () {
-                    window.location.href = '@Url.Action("SelectTrainer", "Trainers")' + '?trainerId=' + trainerId;
-                }, 500);
-            });
-        });
-    </script>
+				// After short delay, redirect to store trainer in session
+				setTimeout(function () {
+					window.location.href = '@Url.Action("SelectTrainer", "Trainers")' + '?trainerId=' + trainerId;
+				}, 500);
+			});
+		});
+	</script>
 }

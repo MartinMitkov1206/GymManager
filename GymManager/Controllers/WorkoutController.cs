@@ -19,24 +19,31 @@ namespace GymManager.Controllers
         [HttpGet]
         public IActionResult Schedule()
         {
-            // Check if the user is logged in
+            // 1) Must be logged in
             int? userId = HttpContext.Session.GetInt32("UserID");
             if (userId == null)
-            {
                 return RedirectToAction("Login", "Account");
-            }
 
-            // Check if a trainer was selected (stored in session)
+            // 2) Must have picked a trainer
             int? trainerId = HttpContext.Session.GetInt32("SelectedTrainerId");
             if (trainerId == null)
             {
-                // No trainer selected, redirect to trainers page
-                return RedirectToAction("Index", "Trainers");
+                TempData["ErrorMessage"] = "Please select a trainer before scheduling.";
+                return RedirectToAction("Index", "Home");
             }
 
-            // Pass the selected trainer ID to the view
+            // 3) Look up their name
+            var trainerName = _context.User
+                                      .Where(u => u.UserID == trainerId.Value)
+                                      .Select(u => u.UserName)
+                                      .FirstOrDefault()
+                                ?? "Unknown";
+            ViewBag.TrainerName = trainerName;
+
+            // 4) Finally render the page
             return View(model: trainerId.Value);
         }
+
 
 
         [HttpPost]

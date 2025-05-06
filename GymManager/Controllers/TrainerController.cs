@@ -21,7 +21,7 @@ namespace GymManager.Controllers
         {
             // Must be logged in (any user)
             if (HttpContext.Session.GetInt32("UserID") == null)
-                return RedirectToAction("Login", "Account");
+            return RedirectToAction("Login", "Account");
 
             HttpContext.Session.SetInt32("SelectedTrainerId", trainerId);
             return RedirectToAction("Index", "Home");
