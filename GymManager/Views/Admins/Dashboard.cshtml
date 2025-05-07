@@ -1,0 +1,136 @@
+﻿@model GymManager.Models.ViewModels.AdminDashboardViewModel
+@using Microsoft.EntityFrameworkCore
+@using GymManager.Data
+@inject GymManagerContext _db
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h2 class="mb-4 text-center">Admin Dashboard</h2>
+
+<ul class="nav nav-tabs" id="adminTabs">
+    <li class="nav-item">
+        <a class="nav-link active" data-bs-toggle="tab" href="#tabBookings">
+            All Bookings
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#tabProgress">
+            Client Progress
+        </a>
+    </li>
+</ul>
+
+<div class="tab-content mt-3">
+    <!-- ──────── All Bookings ──────── -->
+    <div id="tabBookings" class="tab-pane fade show active">
+        @foreach (var w in Model.AllWorkouts)
+        {
+            <div class="card mb-2 text-white bg-dark">
+                <div class="card-body p-2">
+                    <div class="row align-items-center">
+                        <!-- Trainer Name -->
+                        <div class="col-3 text-start">
+                            <strong>@w.TrainerName</strong>
+                        </div>
+
+                        <!-- Client Name -->
+                        <div class="col-3 text-center">
+                            @w.User.UserName
+                        </div>
+
+                        <!-- Date & Time -->
+                        <div class="col-3 text-center">
+                            @w.ScheduledAt.ToString("g")
+                        </div>
+
+                        <!-- Type -->
+                        <div class="col-2 text-center">
+                            @(w.IsIndividual ? "Individual" : "Group")
+                        </div>
+
+                        <!-- Delete Button -->
+                        <div class="col-1 text-end">
+                            <form asp-action="DeleteBooking" asp-controller="Admin" method="post">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="bookingId" value="@w.WorkoutID" />
+                                <button type="submit"
+                                        class="btn btn-outline-light btn-sm"
+                                        title="Delete this booking">
+                                    🗑️
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Client Progress -->
+    <div id="tabProgress" class="tab-pane fade">
+        @foreach (var c in Model.AllClients)
+        {
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">@c.UserName</h5>
+
+                    @* look up this client’s assigned trainer via the join table *@
+                    @{
+                        var workout = Model.AllWorkouts.FirstOrDefault(w => w.User.UserID == c.UserID);
+                        var trainerName = workout?.TrainerName ?? "Unassigned";
+                    }
+                    <p><strong>Trainer:</strong> @trainerName</p>
+
+                    @{
+                        var stats = _db.Stats
+                        .FirstOrDefault(s => s.UserID == c.UserID)
+                        ?? new GymManager.Models.Stats { UserID = c.UserID };
+                    }
+
+                    <form asp-action="UpdateClientProgress"
+                          asp-controller="Admins"
+                          method="post"
+                          class="row g-3">
+                        <input type="hidden" name="clientId" value="@c.UserID" />
+                        <div class="col-md-3">
+                            <label class="form-label">Weight (kg)</label>
+                            <input name="weight" class="form-control" value="@stats.Weight" />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Bench Press (kg)</label>
+                            <input name="benchPress" class="form-control" value="@stats.BenchPress" />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Squat (kg)</label>
+                            <input name="squat" class="form-control" value="@stats.Squat" />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Deadlift (kg)</label>
+                            <input name="deadlift" class="form-control" value="@stats.DeadLift" />
+                        </div>
+                        <div class="col-12 text-end mt-2">
+                            <button type="submit" class="btn btn-primary">Save Progress</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const tabTriggerEls = document.querySelectorAll('#adminTabs a');
+    tabTriggerEls.forEach(triggerEl => {
+        triggerEl.addEventListener('click', event => {
+            event.preventDefault();
+            const tab = new bootstrap.Tab(triggerEl);
+            tab.show();
+        });
+    });
+</script>
+}

@@ -105,6 +105,10 @@ using (var scope = app.Services.CreateScope())
     app.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}");
+    app.MapControllerRoute(
+    name: "admins",
+    pattern: "{controller=Admins}/{action=Dashboard}/{id?}");
+
 
     app.Run();
 }

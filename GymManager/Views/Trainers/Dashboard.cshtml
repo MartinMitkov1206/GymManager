@@ -1,5 +1,6 @@
 ﻿@model GymManager.Models.ViewModels.TrainerDashboardViewModel
 @using GymManager.Data
+@using Microsoft.EntityFrameworkCore
 @inject GymManagerContext _db
 
 @{
@@ -32,7 +33,7 @@
                             @(w.IsIndividual ? "Individual" : "Group")
                         </div>
                         <div class="col-3 text-end">
-                            <form asp-action="DeleteBooking" asp-controller="Trainers" method="post">
+                            <form asp-action="DeleteBooking" asp-controller="Trainer" method="post">
                                 @Html.AntiForgeryToken()
                                 <input type="hidden" name="workoutId" value="@w.WorkoutID" />
                                 <button type="submit" class="btn btn-outline-danger btn-sm">
@@ -45,54 +46,58 @@
             </div>
         }
     </div>
-    <div id="tabProgress" class="tab-pane fade">
-        @* …your Client Progress cards… *@
-    </div>
-    </div>
+        <!-- ──────── Client Progress ──────── -->
+        <div id="tabProgress" class="tab-pane fade">
+            @if (!Model.MyClients.Any())
+            {
+                <div class="alert alert-info">You have no clients yet.</div>
+            }
+            else
+            {
+                @foreach (var c in Model.MyClients)
+                {
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">@c.UserName</h5>
+                            @{
+                                var stats = _db.Stats
+                                .FirstOrDefault(s => s.UserID == c.UserID)
+                                ?? new GymManager.Models.Stats { UserID = c.UserID };
+                            }
+                            <form asp-action="UpdateClientProgress"
+                                  asp-controller="Trainers"
+                                  method="post"
+                                  class="row g-3">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="clientId" value="@c.UserID" />
 
-    <!-- Client Progress stays the same -->
-    <div id="tabProgress" class="tab-pane fade">
-        @foreach (var c in Model.MyClients)
-        {
+                                <div class="col-md-3">
+                                    <label class="form-label">Weight (kg)</label>
+                                    <input name="weight" class="form-control" value="@stats.Weight" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Bench Press (kg)</label>
+                                    <input name="benchPress" class="form-control" value="@stats.BenchPress" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Squat (kg)</label>
+                                    <input name="squat" class="form-control" value="@stats.Squat" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Deadlift (kg)</label>
+                                    <input name="deadlift" class="form-control" value="@stats.DeadLift" />
+                                </div>
 
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">@c.UserName</h5>
-                    @{
-                        var stats = _db.Stats
-                        .FirstOrDefault(s => s.UserID == c.UserID)
-                        ?? new GymManager.Models.Stats { UserID = c.UserID };
-                    }
-                    <form asp-action="UpdateClientProgress"
-                          asp-controller="Trainers"
-                          method="post"
-                          class="row g-3">
-                        <input type="hidden" name="clientId" value="@c.UserID" />
-                        <div class="col-md-3">
-                            <label class="form-label">Weight</label>
-                            <input name="weight" class="form-control" value="@stats.Weight" />
+                                <div class="col-12 text-end mt-2">
+                                    <button type="submit" class="btn btn-primary">Save Progress</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="col-md-3">
-                            <label class="form-label">Bench</label>
-                            <input name="benchPress" class="form-control" value="@stats.BenchPress" />
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label">Squat</label>
-                            <input name="squat" class="form-control" value="@stats.Squat" />
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label">Deadlift</label>
-                            <input name="deadlift" class="form-control" value="@stats.DeadLift" />
-                        </div>
-                        <div class="col-12 text-end mt-2">
-                                <button class="btn btn-primary">Save Progress</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        }
+                    </div>
+                }
+            }
+        </div>
     </div>
-</div>
 
 @section Scripts {
     <script>
