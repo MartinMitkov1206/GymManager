@@ -18,7 +18,7 @@ namespace GymManager.Models
         [Required]
         public int ClientID { get; set; }
         [ForeignKey("ClientID")]
-        public User Client { get; set; }
+        public User ?Client { get; set; }
 
     }
 }
