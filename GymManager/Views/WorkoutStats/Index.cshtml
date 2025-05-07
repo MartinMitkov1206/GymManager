@@ -1,75 +1,69 @@
 ﻿@{
-	ViewData["Title"] = "My Workout Statistics";
-	var overallStats = ViewBag.OverallStats as GymManager.Models.Stats;
-	// Assume you pass the Age via ViewBag.UserAge, for example.
-	int? userAge = ViewBag.UserAge as int?;
-	var workouts = ViewBag.Workouts as List<GymManager.Models.Workout>;
-	var selectedWorkoutStats = ViewBag.SelectedWorkoutStats as GymManager.Models.WorkoutStats;
-	int? selectedWorkoutID = ViewBag.SelectedWorkoutID as int?;
-	string unit = ViewBag.Unit as string ?? "kg";
+    ViewData["Title"] = "My Workout Statistics";
+    var overallStats = ViewBag.OverallStats as GymManager.Models.Stats;
+    int? userAge = ViewBag.UserAge as int?;
+    var workouts = ViewBag.Workouts as List<GymManager.Models.Workout>;
+    string unit = ViewBag.Unit as string ?? "kg";
 }
 
 <div class="container mt-5">
-	<h2 class="text-center mb-4">My Overall Stats</h2>
-	@if (overallStats != null)
-	{
-		<div class="mb-4">
-			@if (userAge.HasValue)
-			{
-				<p><strong>Age:</strong> @userAge years</p>
-			}
-			<p><strong>Weight:</strong> @overallStats.Weight @unit</p>
-			<p><strong>Height:</strong> @overallStats.Height cm</p>
-			<p><strong>Bench Press:</strong> @overallStats.BenchPress @unit</p>
-			<p><strong>Squat:</strong> @overallStats.Squat @unit</p>
-			<p><strong>Deadlift:</strong> @overallStats.DeadLift @unit</p>
-			<p><strong>Total Workouts:</strong> @overallStats.Workouts</p>
-		</div>
-	}
-	else
-	{
-		<p class="text-muted">No overall stats available. Please update your stats in your profile.</p>
-	}
-	<!-- Rest of your view... -->
-</div>
+    <h2 class="text-center mb-4">My Overall Stats</h2>
+    @if (overallStats != null)
+    {
+        <div class="mb-4">
+            @if (userAge.HasValue)
+            {
+                <p><strong>Age:</strong> @userAge years</p>
+            }
+            <p><strong>Weight:</strong> @overallStats.Weight @unit</p>
+            <p><strong>Height:</strong> @overallStats.Height cm</p>
+            <p><strong>Bench Press:</strong> @overallStats.BenchPress @unit</p>
+            <p><strong>Squat:</strong> @overallStats.Squat @unit</p>
+            <p><strong>Deadlift:</strong> @overallStats.DeadLift @unit</p>
+            <p><strong>Total Workouts:</strong> @overallStats.Workouts</p>
+        </div>
+    }
+    else
+    {
+        <p class="text-muted">No overall stats available. Please update your stats in your profile.</p>
+    }
 
+    <hr />
 
-<hr />
+    <h2 class="text-center mb-4">All Workouts</h2>
 
-<h2 class="text-center mb-4">Select a Workout to View Its Statistics</h2>
-<form method="get" action="@Url.Action("Index", "WorkoutStats")">
-	<div class="mb-3">
-		<label for="workoutId" class="form-label">Select Workout</label>
-		<select id="workoutId" name="workoutId" class="form-select">
-			<option value="">-- Select a Workout --</option>
-			@foreach (var workout in workouts)
-			{
-				if (selectedWorkoutID.HasValue && selectedWorkoutID.Value == workout.WorkoutID)
-				{
-					<option value="@workout.WorkoutID" selected>
-						Workout @workout.WorkoutID - @workout.TrainerName - @workout.Duration min
-					</option>
-				}
-				else
-				{
-					<option value="@workout.WorkoutID">
-						Workout @workout.WorkoutID - @workout.TrainerName - @workout.Duration min
-					</option>
-				}
-			}
-		</select>
-	</div>
-	<button type="submit" class="btn btn-primary">View Workout Statistics</button>
-</form>
-
-@if (selectedWorkoutStats != null)
-{
-	<hr />
-	<h3 class="mt-4">Workout Statistics</h3>
-	<div class="mt-3">
-		<p><strong>Workout Stat ID:</strong> @selectedWorkoutStats.WorkoutStatID</p>
-		<p><strong>Statistic Value:</strong> @selectedWorkoutStats.WorkoutStat</p>
-		<!-- Additional workout statistics fields can be added here -->
-	</div>
-}
+    @if (workouts != null && workouts.Any())
+    {
+        <!-- scrollable, styled container -->
+        <div class="card shadow-sm border-0 mb-5">
+            <div class="card-body p-3 overflow-auto" style="max-height: 500px; background-color: dimgray;">
+                <div class="row g-4">
+                    @foreach (var workout in workouts)
+                    {
+                        var typeName = workout.WorkoutTypeID switch
+                        {
+                            1 => "Chest",
+                            2 => "Pull",
+                            3 => "Legs",
+                            _ => "Unknown"
+                        };
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body d-flex flex-column">
+                                    <h6 class="card-title text-primary">@typeName</h6>
+                                    <p class="card-text mb-1"><strong>Duration:</strong> @workout.Duration min</p>
+                                    <p class="card-text mb-1"><strong>Trainer:</strong> @workout.TrainerName</p>
+                                    <p class="card-text mt-auto"><small class="text-muted">Workout #@workout.WorkoutID</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <p class="text-center text-muted">You haven’t done any workouts yet.</p>
+    }
 </div>
