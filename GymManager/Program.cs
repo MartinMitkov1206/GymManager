@@ -38,6 +38,8 @@ using (var scope = app.Services.CreateScope())
         ctx.Role.Add(new Role { RoleType = "User" });
     if (!ctx.Role.Any(r => r.RoleType == "Trainer"))
         ctx.Role.Add(new Role { RoleType = "Trainer" });
+    if (!ctx.Role.Any(r => r.RoleType == "Admin"))
+        ctx.Role.Add(new Role { RoleType = "Admin" });
     ctx.SaveChanges();
 
     // 2) Seed the 8 trainer accounts if none exist yet
@@ -59,31 +61,50 @@ using (var scope = app.Services.CreateScope())
             new User { UserName = "July Shtirkof", Email = "julytrainer@gmail.com", PasswordSalt = salt, PasswordHash = hash, Age = 30, RoleID = trainerRoleId, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
         };
 
+
         ctx.User.AddRange(trainers);
         ctx.SaveChanges();
     }
+    var adminRoleId = ctx.Role.Single(r => r.RoleType == "Admin").RoleID;
+    if (!ctx.User.Any(u => u.RoleID == adminRoleId))
+    {
+        var salt = PasswordHelper.GenerateSalt();
+        var hash = PasswordHelper.HashPassword("admin", salt);
+        ctx.User.Add(new User
+        {
+            UserName = "Admin",
+            Email = "admin@gymmanager.com",
+            PasswordSalt = salt,
+            PasswordHash = hash,
+            Age = 69,
+            RoleID = adminRoleId,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        });
+        ctx.SaveChanges();
+    }
+    // ────────────────────────────────────────────────────────────────────────
+
+    if (!app.Environment.IsDevelopment())
+    {
+        app.UseExceptionHandler("/Home/Error");
+        app.UseHsts();
+    }
+    else
+    {
+        app.UseDeveloperExceptionPage();
+    }
+
+    app.UseHttpsRedirection();
+    app.UseStaticFiles();
+    app.UseRouting();
+    app.UseSession();
+    app.UseAuthentication();
+    app.UseAuthorization();
+
+    app.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+
+    app.Run();
 }
-// ────────────────────────────────────────────────────────────────────────
-
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
-}
-else
-{
-    app.UseDeveloperExceptionPage();
-}
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-app.UseRouting();
-app.UseSession();
-app.UseAuthentication();
-app.UseAuthorization();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.Run();
