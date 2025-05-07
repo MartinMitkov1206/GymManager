@@ -3,7 +3,7 @@ wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\Images\ChatGPT Image May 6, 2025, 08_28_41 PM.png
 wwwroot\Images\ErkoTrainer.jpg
-wwwroot\Images\image0.png.png
+wwwroot\Images\image0.png
 wwwroot\Images\JulyTrainer.jpg
 wwwroot\Images\KamenTrainer.jpg
 wwwroot\Images\MartiTrainer.JPEG

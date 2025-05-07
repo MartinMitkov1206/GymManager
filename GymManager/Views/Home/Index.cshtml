@@ -189,24 +189,32 @@
 
 @section Scripts {
 	<script>
-		document.querySelectorAll('#trainerTabs a').forEach(el => new bootstrap.Tab(el));
-		$(document).ready(function () {
-			$(".trainer-card").on("click", function () {
-				var trainerId = $(this).data("trainer-id");
+		$(function(){
+		  $(".trainer-card").on("click", function(){
+			var $card      = $(this),
+				trainerId  = $card.data("trainer-id"),
+				url        = '@Url.Action("SelectTrainer", "Trainers")';
 
-				// Remove previous selection
-				$(".trainer-card").removeClass("border border-primary");
-				$(".trainer-card .selected-message").remove();
+			// 1) Clear any previous “Selected” badges
+			$(".trainer-card").removeClass("border border-primary")
+							  .find(".selected-message").remove();
 
-				// Highlight the clicked trainer
-				$(this).addClass("border border-primary");
-				$(this).find(".card-body").append('<div class="selected-message text-success mt-2">Selected</div>');
+			// 2) Highlight this one
+			$card.addClass("border border-primary")
+				 .find(".card-body")
+				 .append('<div class="selected-message text-success mt-2">Selected</div>');
 
-				// After short delay, redirect to store trainer in session
-				setTimeout(function () {
-					window.location.href = '@Url.Action("SelectTrainer", "Trainers")' + '?trainerId=' + trainerId;
-				}, 500);
-			});
+			// 3) Tell the server which trainer was picked
+			$.get(url, { trainerId: trainerId })
+			 .fail(function(){
+				alert("Couldn't save your trainer selection.  Try logging in again.");
+			 });
+		  });
 		});
 	</script>
+}
+
+}
+
+
 }

@@ -16,16 +16,17 @@ namespace GymManager.Controllers
         }
 
         // GET /Trainers/SelectTrainer?trainerId=123
+        // GET /Trainers/SelectTrainer?trainerId=123
         [HttpGet]
         public IActionResult SelectTrainer(int trainerId)
         {
-            // Must be logged in (any user)
             if (HttpContext.Session.GetInt32("UserID") == null)
-            return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Account");
 
             HttpContext.Session.SetInt32("SelectedTrainerId", trainerId);
             return RedirectToAction("Index", "Home");
         }
+
 
         // GET /Trainers/Dashboard
         [HttpGet]

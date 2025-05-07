@@ -823,8 +823,8 @@
       ]
     },
     {
-      "Route": "Images/image0.png.afyttxodgi.png",
-      "AssetFile": "Images/image0.png.png",
+      "Route": "Images/image0.afyttxodgi.png",
+      "AssetFile": "Images/image0.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -863,13 +863,13 @@
         },
         {
           "Name": "label",
-          "Value": "Images/image0.png.png"
+          "Value": "Images/image0.png"
         }
       ]
     },
     {
-      "Route": "Images/image0.png.png",
-      "AssetFile": "Images/image0.png.png",
+      "Route": "Images/image0.png",
+      "AssetFile": "Images/image0.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
